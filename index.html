@@ -30,16 +30,16 @@
 <meta name="theme-color" content="#121212" media="(max-width: 859px)">
 <meta name="theme-color" content="#1f1f1f">
 <title>AI술사 | 무료 주문서</title>
-<meta name="description" content="챗GPT 비밀코드 100개부터 클로드 코드 설치, AI 티 안 나는 글·웹사이트, 마케팅 스킬까지. AI술사가 정리한 무료 주문서 5편.">
+<meta name="description" content="챗GPT 비밀코드 100개부터 클로드 코드 설치, AI 티 안 나는 글·웹사이트, 마케팅 스킬까지. AI술사가 정리한 무료 주문서 6편.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="AI술사 | 무료 주문서 5편">
+<meta property="og:title" content="AI술사 | 무료 주문서 6편">
 <meta property="og:description" content="챗GPT 비밀코드 100개부터 클로드 코드 설치, AI 티 안 나는 글·웹사이트, 마케팅 스킬까지. 이름·연락처 한 번만 남기면 전부 열려요.">
 <meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/">
 <meta property="og:site_name" content="AI술사">
 <meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="AI술사 주문서. 무료 5편, 챗GPT 비밀코드 100개부터 클로드 코드까지">
+<meta property="og:image:alt" content="AI술사 주문서. 무료 6편, 챗GPT 비밀코드 100개부터 클로드 코드까지">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preload" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
@@ -225,7 +225,7 @@ input::placeholder{color:#8a8984}
 <div class="overlay" id="mailOv">
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="mailH" tabindex="-1">
     <div class="sheet-top"><button class="close" type="button" data-close aria-label="닫기"><i class="ph-bold ph-x" aria-hidden="true"></i></button></div>
-    <h2 id="mailH">딱 한 번만 남기면<br>5편 전부 열려요</h2>
+    <h2 id="mailH">딱 한 번만 남기면<br>6편 전부 열려요</h2>
     <p class="desc">입력하면 바로 자료로 넘어가요. 새 주문서가 나오면 알려드려요(동의한 경우만).</p>
     <form id="form" novalidate>
       <div class="field">
@@ -285,6 +285,10 @@ const DOCS = [
     title:"클로드 코드 설치가이드 & 활용법",
     desc:"처음 설치부터 제대로 쓰는 법까지 순서대로 따라 하면 돼요",
     tags:[["입문",1],["설치 포함"]] },
+  { id:"token-saving", url:"https://www.send.co/a/pKGZPIG3",
+    title:"클로드 토큰 아끼는 스킬 3종",
+    desc:"같은 요금제로 더 오래 쓰는 토큰 절약 스킬 설치법과 사용법",
+    tags:[["Claude Code 필요"],["설치 포함"]] },
   { id:"web-design", url:"https://claude.ai/artifact/7YBrgbhjPUatcdzzC5wDs3",
     title:"AI 티 안 나는 웹사이트, 스킬 3개로 딸깍",
     desc:"avoid-ai-design · taste · impeccable 설치법과 바로 쓰는 프롬프트",
@@ -338,8 +342,8 @@ function renderGate(){
   $("#gate").classList.toggle("is-open",on);
   $("#gateIc").innerHTML = `<i class="ph-bold ${on?"ph-seal-check":"ph-lock-simple"}"></i>`;
   $("#gateTx").innerHTML = on
-    ? `<b>5편 모두 열렸어요</b><span>보고 싶은 주문서를 눌러보세요</span>`
-    : `<b>잠긴 주문서 5편</b><span>정보 한 번만 남기면 전부 열려요</span>`;
+    ? `<b>6편 모두 열렸어요</b><span>보고 싶은 주문서를 눌러보세요</span>`
+    : `<b>잠긴 주문서 6편</b><span>정보 한 번만 남기면 전부 열려요</span>`;
 }
 function renderFiles(){
   const on = unlocked();
