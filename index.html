@@ -448,15 +448,16 @@ async function saveLead(lead){
   const timer = setTimeout(()=>ctrl.abort(), FETCH_TIMEOUT_MS);
   let r;
   try{
-    r = await fetch(`${SUPABASE_URL}/rest/v1/leads?on_conflict=email`,{
+    r = await fetch(`${SUPABASE_URL}/rest/v1/leads`,{
       method:"POST", signal:ctrl.signal,
       headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json",
-               Prefer:"resolution=ignore-duplicates,return=minimal"},
+               Prefer:"return=minimal"},
       body:JSON.stringify(lead)
     });
   }catch(ex){
     throw {kind: ex && ex.name==="AbortError" ? "timeout" : (navigator.onLine ? "network" : "offline")};
   }finally{ clearTimeout(timer); }
+  if(r.status===409) return;   // 이미 등록된 이메일 → 그대로 열어줌 (목록 읽기 권한은 일부러 안 줌)
   if(!r.ok) throw {kind:"server", status:r.status};
 }
 const ERRORS = {
