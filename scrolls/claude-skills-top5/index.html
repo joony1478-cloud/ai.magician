@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>클로드 코드 필수 스킬 5종</title>
+<meta name="description" content="5개 스킬을 한 번에 까는 명령어와 바로 쓰는 법">
+<meta property="og:title" content="클로드 코드 필수 스킬 5종">
+<meta property="og:description" content="5개 스킬을 한 번에 까는 명령어와 바로 쓰는 법">
+<meta property="og:image" content="cover.png">
+<style>
+@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#f7f5ef;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.lbl+p{font-size:17px;font-weight:600;margin-top:2px}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 스킬 5개 타일">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>클로드 코드 필수 스킬<br><em>5종 한 번에 설치하기</em></h1>
+<p class="lead">클로드 코드, 그냥 쓰면 반만 쓰는 거예요.<br>스킬 5개만 깔아도 <b>기억·검색·계획·디자인</b>이 달라져요.<br>제가 초간단으로 알려드릴게요.</p>
+
+<h2>준비물</h2>
+<ol class="prep">
+  <li><span class="n">1</span>Claude 유료 계정 (Pro 이상)</li>
+  <li><span class="n">2</span>클로드 코드가 설치돼 있을 것</li>
+  <li><span class="n">3</span>Node.js (스킬 2 Playwright가 써요)</li>
+</ol>
+
+<section class="step">
+  <span class="badge">STEP 1</span>
+  <h3>5개 한 번에 설치</h3>
+  <p class="sub">문장 하나 복붙이면 끝나요.</p>
+  <ol class="do">
+    <li><span class="n">1</span>클로드 코드를 열어요.</li>
+    <li><span class="n">2</span>아래 문장을 복사해서 붙여넣어요.</li>
+  </ol>
+  <div class="copy"><pre class="ko">claude plugin install 명령어로 claude-plugins-official에서 이 5개 플러그인을 설치해줘: claude-md-management, playwright, context7, superpowers, frontend-design</pre><button type="button">복사</button></div>
+  <ol class="do">
+    <li><span class="n">3</span>다 깔리면 이걸 입력해서 적용해요.</li>
+  </ol>
+  <div class="copy"><pre>/reload-plugins</pre><button type="button">복사</button></div>
+  <p class="done">입력창에 <code>/</code> 치면 새 스킬이 보여요.</p>
+
+  <p class="lbl">하나씩 깔고 싶다면</p>
+  <p>한 줄씩 입력 → "Install for you" 선택</p>
+  <div class="copy"><pre>/plugin install claude-md-management@claude-plugins-official
+/plugin install playwright@claude-plugins-official
+/plugin install context7@claude-plugins-official
+/plugin install superpowers@claude-plugins-official
+/plugin install frontend-design@claude-plugins-official</pre><button type="button">복사</button></div>
+  <p class="tip">데스크톱 앱이면 입력창 + 버튼 → Plugins → Add plugin에서 이름으로 찾아도 돼요.</p>
+</section>
+
+<section class="step">
+  <span class="badge"><i style="background:#8b7bff"></i>STEP 2 · 스킬 1</span>
+  <h3><small>claude-md-management</small>CLAUDE.md 관리</h3>
+  <p class="lbl">뭐가 좋아져요</p>
+  <p>대화가 길어지면 처음 한 말을 까먹죠. 명령어 한 줄이면 이번 대화에서 배운 걸 CLAUDE.md(기억 파일)에 정리해 줘요. 자동은 아니라서 직접 입력해야 해요.</p>
+  <p class="lbl">이렇게 써보세요 (작업 끝날 때)</p>
+  <div class="copy"><pre>/revise-claude-md</pre><button type="button">복사</button></div>
+  <div class="copy"><pre class="ko">내 CLAUDE.md 최신인지 점검해줘</pre><button type="button">복사</button></div>
+</section>
+
+<section class="step">
+  <span class="badge"><i style="background:#3ee08f"></i>STEP 3 · 스킬 2</span>
+  <h3><small>playwright</small>Playwright</h3>
+  <p class="lbl">뭐가 좋아져요</p>
+  <p>클로드가 테스트용 브라우저를 따로 띄워서 직접 열고, 읽고, 클릭하며 잘 되는지 확인해요.</p>
+  <p class="lbl">이렇게 써보세요</p>
+  <div class="copy"><pre class="ko">playwright로 내 사이트 열어서 버튼 전부 눌러보고, 안 되는 거 알려줘</pre><button type="button">복사</button></div>
+</section>
+
+<section class="step">
+  <span class="badge"><i style="background:#4ea1ff"></i>STEP 4 · 스킬 3</span>
+  <h3><small>context7</small>Context7</h3>
+  <p class="lbl">뭐가 좋아져요</p>
+  <p>최신 공식 문서를 보고 답해서 지어내는 게 줄어요.</p>
+  <p class="lbl">이렇게 써보세요 (끝에 use context7)</p>
+  <div class="copy"><pre class="ko">Supabase로 이메일 로그인 기능 만들어줘. use context7</pre><button type="button">복사</button></div>
+</section>
+
+<section class="step">
+  <span class="badge"><i style="background:#ff7a59"></i>STEP 5 · 스킬 4</span>
+  <h3><small>superpowers</small>Superpowers</h3>
+  <p class="lbl">뭐가 좋아져요</p>
+  <p>바로 짜지 않고 브레인스토밍 → 잘게 쪼개서 하나씩 해요.</p>
+  <p class="lbl">이렇게 써보세요</p>
+  <div class="copy"><pre class="ko">할 일 관리 앱 만들고 싶어. 바로 만들지 말고 브레인스토밍부터 같이 하자</pre><button type="button">복사</button></div>
+</section>
+
+<section class="step">
+  <span class="badge"><i style="background:#ffd84d"></i>STEP 6 · 스킬 5</span>
+  <h3><small>frontend-design</small>Frontend Design</h3>
+  <p class="lbl">뭐가 좋아져요</p>
+  <p>코드 전에 스타일부터 정하고 끝까지 일관되게 만들어요.</p>
+  <p class="lbl">이렇게 써보세요</p>
+  <div class="copy"><pre class="ko">동네 빵집 홈페이지 만들어줘. 흔한 AI 느낌 말고 디자인 방향부터 정하고 시작해줘</pre><button type="button">복사</button></div>
+</section>
+
+<h2>이렇게 써먹어요</h2>
+<ul class="chk">
+  <li><span>작업 끝날 땐 <code>/revise-claude-md</code></span></li>
+  <li><span>사이트 확인은 "playwright로 열어봐"</span></li>
+  <li><span>최신 정보가 필요하면 끝에 "use context7"</span></li>
+  <li><span>큰 작업은 "브레인스토밍부터 하자"</span></li>
+  <li><span>화면 만들 땐 "디자인 방향부터 정해줘"</span></li>
+</ul>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    function ok(){b.textContent='복사됨 ✓';b.classList.add('ok');setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)}
+    function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+      var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);if(r)ok();else b.textContent='길게 눌러 복사'}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+  });
+});
+</script>
+</body>
+</html>
