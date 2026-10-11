@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>클로드 토큰 아끼는 스킬 3종 설치법 &amp; 사용법</title>
+<meta name="description" content="headroom · ponytail · graphify로 토큰 순삭 막기">
+<meta property="og:title" content="클로드 토큰 아끼는 스킬 3종 설치법 &amp; 사용법">
+<meta property="og:description" content="headroom · ponytail · graphify로 토큰 순삭 막기">
+<meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/token-saving/">
+<meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/token-saving/cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#f7f5ef;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+h2+p{font-size:16px;color:var(--sub);margin-bottom:12px}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ol.prep li small{display:block;color:var(--sub);font-size:14px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+.step>p{margin-top:8px;font-size:16px}
+.shot{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--line)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+table.num{width:100%;margin-top:12px;border-collapse:collapse;font-size:15px}
+table.num td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+/* 비밀코드 100 */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:sticky;top:0;z-index:2;padding:10px 0;background:var(--paper)}
+.pills button{appearance:none;border:1px solid var(--ink);background:#fff;font:600 14px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 12px;cursor:pointer}
+.pills button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cat h3{margin-top:30px;font-weight:800;font-size:20px}
+.cat>p{font-size:15px;color:var(--sub)}
+.code{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 14px 12px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;cursor:pointer}
+.code:hover{border-color:var(--ink)}
+.code .top{display:flex;align-items:baseline;gap:8px}
+.code b{font-family:ui-monospace,Consolas,monospace;font-size:15px}
+.code .w{font-size:13px;color:var(--dim);flex:1}
+.code .c{font-weight:800;font-size:13px;border:1px solid var(--ink);padding:2px 8px}
+.code.ok .c{background:var(--stamp)}
+.code p{margin-top:6px;font-size:15px;color:var(--sub)}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 클로드 토큰 아끼는 스킬 3종">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>클로드 토큰 순삭,<br><em>이 스킬 세 개면 해결</em></h1>
+<p class="lead">작업 몇 번 하고 나면 '사용 한도에 도달했습니다'… 익숙하시죠?<br>원인은 클로드의 <b>'전부 다 읽고, 길게 쓰는'</b> 방식이에요.<br>이 세 가지가 그걸 줄여줘요. 순서대로 해보세요!</p>
+<img class="shot" src="img1.jpg" alt="사용 한도 도달 vs 스킬 설치 후" loading="lazy">
+<h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>Claude Code<small>데스크톱 앱 Code 탭이나 터미널, 편한 곳에서요.</small></span></li><li><span class="n">2</span><span>Node.js · <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> LTS<small>ponytail이 쓰는 작은 훅이 node를 필요로 해요.</small></span></li></ol>
+<section class="step"><span class="badge">STEP 1</span><h3>headroom · graphify 설치</h3><p class=sub>터미널에서 한 줄씩 붙여넣어요.</p><p class="tip">uv가 없다면 먼저 → 맥: <code>brew install uv</code> · 윈도우: <code>winget install astral-sh.uv</code></p><div class="copy line"><pre>uv tool install --python 3.13 &quot;headroom-ai[all]&quot;</pre><button type="button">복사</button></div><div class="copy line"><pre>uv tool install graphifyy</pre><button type="button">복사</button></div><div class="copy line"><pre>graphify install</pre><button type="button">복사</button></div><p class="tip">graphify는 패키지 이름에 y가 두 개(graphifyy)예요. 비슷한 이름은 다른 프로젝트일 수 있어요.</p></section>
+<section class="step"><span class="badge">STEP 2</span><h3>headroom으로 클로드 코드 켜기</h3><p class=sub>앞으로 claude 대신 이렇게 켜주세요.</p><div class="copy line"><pre>headroom wrap claude</pre><button type="button">복사</button></div></section>
+<section class="step"><span class="badge">STEP 3</span><h3>ponytail 설치</h3><p class=sub>켜진 Claude Code 입력창에 두 줄을 따로 입력해요.</p><ol class="do"><li><span class="n">1</span><span>첫 번째 줄</span></li></ol><div class="copy line"><pre>/plugin marketplace add DietrichGebert/ponytail</pre><button type="button">복사</button></div><ol class="do"><li><span class="n">2</span><span>두 번째 줄</span></li></ol><div class="copy line"><pre>/plugin install ponytail@ponytail</pre><button type="button">복사</button></div><p class="done">설치만 해두면 매 세션 자동으로 켜져요.</p></section>
+<section class="step"><span class="badge">STEP 4</span><h3>graphify 실행</h3><p class=sub>내 프로젝트 폴더에서 한 번요.</p><div class="copy line"><pre>/graphify .</pre><button type="button">복사</button></div><p class="done">이제 셋 다 세팅 끝!</p></section>
+<h2>도구별로 뭐가 줄어요?</h2>
+<section class="step"><span class="badge"><i style="background:#4ea1ff"></i>headroom</span><h3><small>헤드룸</small>읽는 양 압축</h3><p>검색 결과·로그·파일·지난 대화를 보내기 전에 내 컴퓨터에서 압축해요. 원본은 저장돼서 필요하면 다시 꺼내 봐요.</p><img class="shot" src="img2.jpg" alt="headroom" loading="lazy"><table class="num"><tr><td>장애 로그 분석</td><td>-57%</td></tr><tr><td>코드베이스 탐색</td><td>-42%</td></tr><tr><td>GitHub 이슈 정리</td><td>-30%</td></tr><tr><td>코드 검색 결과 100개</td><td>-21%</td></tr></table></section>
+<section class="step"><span class="badge"><i style="background:#f2e15b"></i>ponytail</span><h3><small>포니테일</small>쓰는 코드 줄이기</h3><p>코드를 쓰기 전에 "이미 있는 걸 재사용할 수 없나?"부터 따지게 해서 코드를 짧게 만들어요.</p><img class="shot" src="img3.jpg" alt="ponytail" loading="lazy"><table class="num"><tr><td>작성한 코드 줄 수</td><td>-54%</td></tr><tr><td>시간</td><td>-27%</td></tr><tr><td>토큰</td><td>-22%</td></tr><tr><td>비용</td><td>-20%</td></tr></table><p class="tip">제작자 측정값이에요. 실제 저장소(FastAPI+React)에서 기능 12개 수정 세션 평균, 모델 Haiku 4.5. 이미 코드가 촘촘한 프로젝트에선 거의 안 줄어요.</p></section>
+<section class="step"><span class="badge"><i style="background:#3ee08f"></i>graphify</span><h3><small>그래피파이</small>찾는 길 미리 만들기</h3><p>프로젝트를 지식 그래프(개념과 연결 지도)로 한 번 만들어 두고, 파일을 매번 다시 뒤지는 대신 지도로 바로 찾아가게 해요.</p><img class="shot" src="img4.jpg" alt="graphify" loading="lazy"></section>
+<p class="tip">headroom 수치는 제작자 공개 예시 기준이에요.</p>
+<h2>이 순서로 쓰세요</h2>
+<ul class="chk"><li><span>항상 <code>headroom wrap claude</code>로 켜기</span></li><li><span>ponytail은 알아서 켜져요</span></li><li><span>큰 프로젝트·자료 폴더에서 <code>/graphify .</code> 한 번</span></li></ul>
+<p class="bye">요금제 올리기 전에, 이 세 개부터 써보세요!</p>
+<p class="tip">2026년 10월 기준 설치법이에요. 도구 업데이트에 따라 명령어나 수치가 바뀔 수 있어요.</p>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+
+</script>
+</body>
+</html>

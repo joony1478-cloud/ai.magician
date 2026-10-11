@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI 티 나는 글, 자연스럽게 바꾸는 법</title>
+<meta name="description" content="번역투 잡는 스킬 + 내 말투를 학습시키는 복붙 프롬프트">
+<meta property="og:title" content="AI 티 나는 글, 자연스럽게 바꾸는 법">
+<meta property="og:description" content="번역투 잡는 스킬 + 내 말투를 학습시키는 복붙 프롬프트">
+<meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/writing/">
+<meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/writing/cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#f7f5ef;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+h2+p{font-size:16px;color:var(--sub);margin-bottom:12px}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ol.prep li small{display:block;color:var(--sub);font-size:14px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+.step>p{margin-top:8px;font-size:16px}
+.shot{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--line)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+table.num{width:100%;margin-top:12px;border-collapse:collapse;font-size:15px}
+table.num td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+/* 비밀코드 100 */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:sticky;top:0;z-index:2;padding:10px 0;background:var(--paper)}
+.pills button{appearance:none;border:1px solid var(--ink);background:#fff;font:600 14px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 12px;cursor:pointer}
+.pills button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cat h3{margin-top:30px;font-weight:800;font-size:20px}
+.cat>p{font-size:15px;color:var(--sub)}
+.code{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 14px 12px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;cursor:pointer}
+.code:hover{border-color:var(--ink)}
+.code .top{display:flex;align-items:baseline;gap:8px}
+.code b{font-family:ui-monospace,Consolas,monospace;font-size:15px}
+.code .w{font-size:13px;color:var(--dim);flex:1}
+.code .c{font-weight:800;font-size:13px;border:1px solid var(--ink);padding:2px 8px}
+.code.ok .c{background:var(--stamp)}
+.code p{margin-top:6px;font-size:15px;color:var(--sub)}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 AI 티 나는 글, 자연스럽게">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>AI 티 나는 글,<br><em>자연스럽게 바꾸는 법</em></h1>
+<p class="lead">"자연스럽게 써줘", "사람이 쓴 것처럼 써줘"<br>라고 해도 똑같이 어색하지 않으셨나요?</p>
+<h2>이유는 두 가지예요</h2>
+<ol class="prep"><li><span class="n">1</span><span>한국어에 영어 번역투가 남아서<small>단어는 한국어인데 문장 구조가 영어를 옮긴 것 같아요.</small></span></li>
+<li><span class="n">2</span><span>AI가 내 말투를 본 적이 없어서<small>"자연스럽게"라고 해도 AI가 받는 건 사실상 주제뿐이에요.</small></span></li></ol>
+<h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>Claude Code (1단계용 · 건너뛰어도 돼요)</span></li><li><span class="n">2</span><span>프로젝트 기능이 있는 클로드 또는 ChatGPT (2~3단계)</span></li></ol>
+<p class="tip">클로드 코드가 없어도 STEP 2~3만 해도 효과가 있어요.</p>
+<section class="step"><span class="badge">STEP 1</span><h3>번역투 잡는 스킬 설치</h3><p class=sub>한글 AI 글의 티를 줄여주는 im-not-ai 스킬이에요. 건너뛰어도 돼요.</p><ol class="do"><li><span class="n">1</span><span>Claude Code에 두 줄을 차례로 입력해요.</span></li></ol><div class="copy line"><pre>/plugin marketplace add epoko77-ai/im-not-ai</pre><button type="button">복사</button></div><div class="copy line"><pre>/plugin install humanize-korean@im-not-ai</pre><button type="button">복사</button></div><ol class="do"><li><span class="n">2</span><span>새 세션을 열고 입력한 뒤, 고칠 글을 붙여넣어요.</span></li></ol><div class="copy line"><pre>/humanize-korean</pre><button type="button">복사</button></div><p class="lbl">또는 말로 시켜도 돼요</p><div class="copy"><pre class="ko">이 글 AI 티 없애줘</pre><button type="button">복사</button></div><p class="done">‘AI 기술을 통해 효율을 높일 수 있다’ → ‘AI로 효율을 높인다’</p><p class="tip">내용(사실·인용)은 그대로, 문체와 리듬만 바꿔요. 출처 · <a href="https://github.com/epoko77-ai/im-not-ai" target="_blank" rel="noopener">github.com/epoko77-ai/im-not-ai</a></p></section>
+<section class="step"><span class="badge">STEP 2</span><h3>샘플 글 3~5개 모으기</h3><p class=sub>AI가 말투를 배울 재료예요.</p><ol class="do"><li><span class="n">1</span><span>내가 직접 쓴 글로 골라요. (AI 글이 섞이면 말투가 흐려져요)</span></li><li><span class="n">2</span><span>쓰려는 글과 같은 종류로 골라요. (캡션이면 캡션)</span></li><li><span class="n">3</span><span>글마다 파일 하나로 저장해요. (예: 인스타캡션_01.txt)</span></li><li><span class="n">4</span><span>제목·해시태그·광고 문구는 빼고 본문만 남겨요.</span></li></ol><p class="tip">좋아하는 작가·크리에이터 글을 넣어도 돼요. 그 사람 문체로 써줘요.</p></section>
+<section class="step"><span class="badge">STEP 3</span><h3>프로젝트에 넣고 말투 학습</h3><p class=sub>한 번만 세팅하면 계속 써요.</p><ol class="do"><li><span class="n">1</span><span>클로드 또는 ChatGPT에서 프로젝트를 새로 만들어요.</span></li><li><span class="n">2</span><span>STEP 2 파일들을 프로젝트 파일(지식)에 추가해요.</span></li><li><span class="n">3</span><span>아래 프롬프트를 프로젝트 지침(Instructions)에 붙여넣어요.</span></li></ol><p class="lbl">내 글을 넣었다면</p><div class="copy"><pre class="ko">너는 내 글쓰기 대필 담당이야.
+이 프로젝트에 올려둔 글은 전부 내가 직접 쓴 글이야.
+
+[1단계: 내 말투 분석]
+처음 한 번만, 올려둔 글을 읽고 아래 항목을 분석해서
+&quot;내 말투 규칙표&quot;로 정리해줘.
+1. 문장 길이 (짧게 끊는지, 길게 이어 쓰는지)
+2. 문장 끝맺음 (~해요 / ~합니다 / ~거든요 / 반말 비율)
+3. 자주 쓰는 표현과 말버릇
+4. 자주 쓰는 접속사와 문장 시작 단어, 쓰지 않는 것
+5. 줄바꿈과 문단 나누기 방식
+6. 이모지, 물음표, 느낌표, ㅋㅋ 같은 기호 사용 습관
+7. 내가 쓰지 않는 표현 (AI 같은 표현, 번역투 등)
+분석 결과를 보여주고, 내가 &quot;맞아&quot;라고 하면
+그 규칙을 앞으로의 기준으로 삼아.
+
+[2단계: 글쓰기]
+내가 주제를 주면 규칙표대로 써줘.
+- 내가 준 사실만 쓰고, 없는 사실이나 숫자는 지어내지 마.
+- 모르는 건 [확인 필요]라고 표시해.
+- 불필요한 인사말, 마무리 멘트, 설명은 붙이지 마.
+
+[3단계: 스스로 검수]
+쓴 글을 보여주기 전에 아래를 확인하고,
+하나라도 어기면 고쳐서 다시 확인해.
+□ 규칙표의 문장 길이와 끝맺음에 맞나
+□ 내가 쓰지 않는 표현이 들어가 있나
+□ 번역투(~를 통해, ~에 대한, ~할 수 있습니다,
+  ~것으로 보입니다)가 있나
+□ 같은 문장 구조가 3번 이상 반복되나
+□ 지어낸 사실이 있나
+최종 글만 출력해줘. 검수 과정은 보여주지 마.</pre><button type="button">복사</button></div><p class="lbl">작가·크리에이터 글을 넣었다면 (이름만 바꿔서)</p><div class="copy"><pre class="ko">너는 글쓰기 대필 담당이야.
+이 프로젝트에 올려둔 글은 내가 닮고 싶은 [작가/크리에이터 이름]의 글이야.
+이 글의 문체를 분석해서 그 느낌으로 써줘. 문장을 그대로 가져오지는 마.
+
+[1단계: 내 말투 분석]
+처음 한 번만, 올려둔 글을 읽고 아래 항목을 분석해서
+&quot;내 말투 규칙표&quot;로 정리해줘.
+1. 문장 길이 (짧게 끊는지, 길게 이어 쓰는지)
+2. 문장 끝맺음 (~해요 / ~합니다 / ~거든요 / 반말 비율)
+3. 자주 쓰는 표현과 말버릇
+4. 자주 쓰는 접속사와 문장 시작 단어, 쓰지 않는 것
+5. 줄바꿈과 문단 나누기 방식
+6. 이모지, 물음표, 느낌표, ㅋㅋ 같은 기호 사용 습관
+7. 내가 쓰지 않는 표현 (AI 같은 표현, 번역투 등)
+분석 결과를 보여주고, 내가 &quot;맞아&quot;라고 하면
+그 규칙을 앞으로의 기준으로 삼아.
+
+[2단계: 글쓰기]
+내가 주제를 주면 규칙표대로 써줘.
+- 내가 준 사실만 쓰고, 없는 사실이나 숫자는 지어내지 마.
+- 모르는 건 [확인 필요]라고 표시해.
+- 불필요한 인사말, 마무리 멘트, 설명은 붙이지 마.
+
+[3단계: 스스로 검수]
+쓴 글을 보여주기 전에 아래를 확인하고,
+하나라도 어기면 고쳐서 다시 확인해.
+□ 규칙표의 문장 길이와 끝맺음에 맞나
+□ 내가 쓰지 않는 표현이 들어가 있나
+□ 번역투(~를 통해, ~에 대한, ~할 수 있습니다,
+  ~것으로 보입니다)가 있나
+□ 같은 문장 구조가 3번 이상 반복되나
+□ 지어낸 사실이 있나
+최종 글만 출력해줘. 검수 과정은 보여주지 마.</pre><button type="button">복사</button></div><p class="tip">화면 이름과 위치는 업데이트로 바뀔 수 있어요. 안 보이면 ‘프로젝트 → 파일 / 지침’ 메뉴를 찾아주세요.</p></section>
+<section class="step"><span class="badge">STEP 4</span><h3>결과 확인하고 고치기</h3><p class=sub>아무 주제나 하나 시켜보세요.</p><div class="copy"><pre class="ko">[주제]에 대한 글을 써줘. 분량은 [ ]자 정도로.</pre><button type="button">복사</button></div><p class="lbl">마음에 안 들면 규칙표를 고치라고 해요</p><div class="copy"><pre class="ko">방금 글은 문장이 길어. 규칙표의 문장 길이를 더 짧게 고쳐줘.</pre><button type="button">복사</button></div><div class="copy"><pre class="ko">&quot;~할 수 있습니다&quot;는 내가 안 써. 금지 표현에 추가해줘.</pre><button type="button">복사</button></div><p class="done">같은 주제를 프로젝트 밖·안에서 시켜보고 차이가 보이면 세팅 완료!</p></section>
+<h2>주의</h2>
+<ul class="warn"><li>‘스스로 검수’는 AI가 자기 글을 다시 보는 방식이라 완벽하지 않아요. 최종본은 꼭 직접 읽어주세요.</li></ul>
+<h2>이렇게 써먹어요</h2>
+<ul class="chk"><li><span>보고서, 대본, 블로그 글, 이메일 모두 같은 방식</span></li><li><span>종류가 다르면 그 종류 글을 샘플로 따로 추가</span></li><li><span>저는 콘텐츠 제작·전자책 쓸 때 쓰고 있어요</span></li></ul>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+
+</script>
+</body>
+</html>
