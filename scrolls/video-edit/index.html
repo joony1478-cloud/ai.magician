@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>클로드한테 영상편집 맡기는 법</title>
+<meta name="description" content="레퍼런스 영상 스타일 그대로 컷·자막·효과음·모션그래픽까지 — 편집 스킬 2개 설치법 + 바로 쓰는 문장">
+<meta property="og:title" content="클로드한테 영상편집 맡기는 법">
+<meta property="og:description" content="레퍼런스 영상 스타일 그대로 컷·자막·효과음·모션그래픽까지 — 편집 스킬 2개 설치법 + 바로 쓰는 문장">
+<meta property="og:image" content="cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>
+@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#f7f5ef;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045);--claude:#d97757;--gpt:#10a37f}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+/* 한 줄 명령어: 버튼을 옆에 */
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사 옆에 컷편집·자막·효과음·그래픽 타일이 놓인 커버">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>클로드한테<br><em>영상편집 맡기는 법</em></h1>
+<p class="lead">그냥 "편집해줘" 하면<br>자막만 덩그러니, AI 티 나는 영상이 나와요.</p>
+<p class="lead">그래서 <b>따라 하고 싶은 영상(레퍼런스)을 보여주면<br>그 스타일 그대로 입혀주는 스킬</b>을 만들었어요.<br>프리미어, 캡컷 몰라도 돼요!</p>
+
+<h2>준비물</h2>
+<ol class="prep">
+  <li><span class="n">1</span>Claude Code (Pro 플랜 이상)</li>
+  <li><span class="n">2</span><span>Node.js 18 이상 · <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a></span></li>
+  <li><span class="n">3</span>내 촬영본 + 따라 하고 싶은 레퍼런스 영상</li>
+</ol>
+
+<section class="step">
+  <span class="badge"><i style="background:#8b7bff"></i>STEP 1</span>
+  <h3>편집 스킬 설치</h3>
+  <p class="sub">레퍼런스를 분석해서 컷·자막·효과음을 맞춰줘요.</p>
+  <ol class="do">
+    <li><span class="n">1</span>아래 문장을 클로드 코드에 그대로 보내요.</li>
+  </ol>
+  <div class="copy"><pre class="ko">https://joony1478-cloud.github.io/ai.magician/scrolls/video-edit/shorts-style-match.zip 이 파일을 받아서 클로드 코드 스킬로 설치해줘. 필요한 ffmpeg, 파이썬, faster-whisper도 전부 설치해줘.</pre><button type="button">복사</button></div>
+  <p class="tip">"실행해도 될까요?" 물어보면 허용을 눌러주세요. 직접 받고 싶으면 <a href="shorts-style-match.zip" download>여기서 다운로드</a>.</p>
+  <p class="done">설치가 끝나면 클로드 코드를 껐다 켜요.</p>
+</section>
+
+<section class="step">
+  <span class="badge"><i style="background:#ff7a59"></i>STEP 2</span>
+  <h3>모션그래픽 스킬 설치</h3>
+  <p class="sub">HeyGen이 공개한 영상 엔진, HyperFrames의 공식 스킬이에요.</p>
+  <ol class="do">
+    <li><span class="n">1</span>클로드 코드에 이렇게 보내요.</li>
+  </ol>
+  <div class="copy"><pre class="ko">터미널에서 npx hyperframes skills 실행해서 HyperFrames 스킬 설치해줘. 끝나면 npx hyperframes doctor로 확인까지 해줘.</pre><button type="button">복사</button></div>
+  <p class="done">doctor에서 전부 체크 뜨면 끝이에요.</p>
+</section>
+
+<section class="step">
+  <span class="badge">STEP 3</span>
+  <h3>편집 맡기기</h3>
+  <p class="sub">영상 두 개를 작업 폴더에 넣고, 한 문장이면 돼요.</p>
+  <ol class="do">
+    <li><span class="n">1</span>레퍼런스 영상과 촬영본을 작업 폴더에 넣어요.</li>
+    <li><span class="n">2</span>효과음을 쓰려면 효과음 폴더도 같이 넣어요.</li>
+    <li><span class="n">3</span>아래 문장에서 파일 이름만 바꿔서 보내요.</li>
+  </ol>
+  <div class="copy"><pre class="ko">레퍼런스.mp4 스타일 분석해서 촬영본.mp4 편집해줘. 컷 리듬이랑 자막 스타일은 레퍼런스랑 똑같이, 효과음은 효과음 폴더에서 골라 넣고, 설명하는 부분엔 모션그래픽도 넣어줘.</pre><button type="button">복사</button></div>
+  <p class="tip">효과음이 없으면 <a href="https://pixabay.com/sound-effects/" target="_blank" rel="noopener">Pixabay 무료 효과음</a>에서 "pop", "whoosh", "ding" 몇 개만 받아두세요.</p>
+  <p class="done">처음 한 번은 받아쓰기 모델(약 1.6GB)을 받느라 오래 걸려요.</p>
+</section>
+
+<section class="step">
+  <span class="badge">STEP 4</span>
+  <h3>말로 다듬기</h3>
+  <p class="sub">마음에 안 드는 부분은 그냥 말하면 다시 뽑아줘요.</p>
+  <div class="copy line"><pre class="ko">자막 좀 더 크게 해줘</pre><button type="button">복사</button></div>
+  <div class="copy line"><pre class="ko">말 속도 조금만 느리게</pre><button type="button">복사</button></div>
+  <div class="copy line"><pre class="ko">두 번 말한 부분 앞에 거 지워줘</pre><button type="button">복사</button></div>
+  <div class="copy line"><pre class="ko">"첫 번째"에 숫자 1 튀어나오는 그래픽 넣어줘</pre><button type="button">복사</button></div>
+  <p class="done">자막 오타도 "○○를 △△로 고쳐줘" 하면 끝이에요.</p>
+</section>
+
+<h2>주의</h2>
+<ul class="warn">
+  <li>배경음악은 저작권 때문에 안 넣어요. 인스타·유튜브 업로드 화면의 음악 기능으로 얹으세요.</li>
+  <li>레퍼런스는 내 촬영본과 비슷한 영상(한 사람이 말하는 세로 영상)일수록 잘 맞아요.</li>
+  <li>남의 영상은 스타일 분석용으로만 쓰고, 그대로 올리지 마세요.</li>
+</ul>
+
+<h2>이렇게 써먹어요</h2>
+<ul class="chk">
+  <li><span>잘 된 쇼츠 하나 저장 → "이 스타일로 편집해줘"</span></li>
+  <li><span>매주 같은 레퍼런스로 → 채널 편집 톤 통일</span></li>
+  <li><span>마음에 드는 스타일이 생기면 → "이 설정 기억해둬"</span></li>
+</ul>
+
+<p class="src">출처 · HyperFrames (HeyGen 오픈소스) <a href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">github.com/heygen-com/hyperframes</a></p>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('pre').textContent;
+    function ok(){b.textContent='복사됨 ✓';b.classList.add('ok');setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)}
+    function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+      var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);if(r)ok();else b.textContent='길게 눌러 복사'}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+  });
+});
+</script>
+</body>
+</html>
