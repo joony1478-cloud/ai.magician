@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>AI 티 안 나는 웹사이트, 스킬 3개로 딸깍</title>
-<meta name="description" content="avoid-ai-design · taste · impeccable 설치법과 바로 쓰는 프롬프트">
-<meta property="og:title" content="AI 티 안 나는 웹사이트, 스킬 3개로 딸깍">
-<meta property="og:description" content="avoid-ai-design · taste · impeccable 설치법과 바로 쓰는 프롬프트">
+<title>클로드 디자인스킬 3종</title>
+<meta name="description" content="Frontend Design · Taste · Impeccable — 설치 명령어와 바로 쓰는 문장">
+<meta property="og:title" content="클로드 디자인스킬 3종">
+<meta property="og:description" content="Frontend Design · Taste · Impeccable — 설치 명령어와 바로 쓰는 문장">
 <meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/web-design/">
 <meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/web-design/cover.png">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
@@ -93,21 +93,43 @@ table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
 </head>
 <body>
 <main>
-<img class="cover" src="cover.png" alt="픽셀 마법사와 AI 티 안 나는 웹사이트">
+<img class="cover" src="cover.png" alt="픽셀 마법사와 클로드 디자인스킬 3종">
 
 <p class="hi">안녕하세요 ai 술사 성준입니다.</p>
-<h1>AI 티 안 나는 웹사이트,<br><em>스킬 3개로 딸깍</em></h1>
+<h1>클로드<br><em>디자인스킬 3종</em></h1>
 <p class="lead">"웹사이트 만들어줘" 하면 늘 비슷하죠?<br>보라색 그라데이션, 가운데 제목, 똑같은 카드 3개.<br><b>성능 문제가 아니라 디자인 기준을 안 줘서</b> 그래요.</p>
+<p class="lead">제가 디자인 스킬 수십 개 써보고 남긴 3개, 초간단으로 알려드릴게요!</p>
+<img class="cover" src="design-studio.jpg" alt="블록 캐릭터가 드로잉 보드 위에 웹사이트 레이아웃 조각을 맞추는 그림" style="margin-top:20px;aspect-ratio:3/2" loading="lazy">
+
 <h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>Claude 유료 요금제 + Claude Code</span></li><li><span class="n">2</span><span>Node.js · <a href="https://nodejs.org" target="_blank" rel="noopener">nodejs.org</a> LTS</span></li></ol>
 <p class="tip">명령어가 어렵다면 Claude Code에 아래 GitHub 링크를 주고 "이 스킬 설치해줘"라고 하세요.</p>
-<section class="step"><span class="badge"><i style="background:#ff7a59"></i>STEP 1</span><h3><small>avoid-ai-design</small>Avoid AI Design</h3><p class=sub>AI 티 진단기. 흔적을 찾아서 고쳐줘요.</p><ol class="do"><li><span class="n">1</span><span>터미널에 입력하고 Claude Code를 다시 켜요.</span></li></ol><div class="copy line"><pre>git clone https://github.com/funboy322/avoid-ai-design.git ~/.claude/skills/avoid-ai-design</pre><button type="button">복사</button></div><p class="lbl">고치기</p><div class="copy"><pre class="ko">이 페이지 AI 티 안 나게 고쳐줘</pre><button type="button">복사</button></div><p class="lbl">진단만 하기</p><div class="copy"><pre class="ko">AI 티 나는 부분 진단만 해줘, 수정은 하지 마</pre><button type="button">복사</button></div><p class="done">문제를 심각한 순서(P0 → P2)대로 알려줘요.</p></section>
-<section class="step"><span class="badge"><i style="background:#f2e15b"></i>STEP 2</span><h3><small>taste-skill</small>Taste</h3><p class=sub>뻔한 레이아웃 대신 개성 있는 디자인으로.</p><div class="copy line"><pre>npx skills add https://github.com/Leonxlnx/taste-skill --skill &quot;design-taste-frontend&quot;</pre><button type="button">복사</button></div><p class="lbl">핵심은 레퍼런스예요</p><div class="copy"><pre class="ko">taste 스킬로 첨부한 이미지 느낌을 살려서 ○○ 랜딩페이지 만들어줘.</pre><button type="button">복사</button></div><div class="copy"><pre class="ko">taste 스킬로 [홈페이지 주소] 분위기를 참고해서 ○○ 랜딩페이지 만들어줘. 똑같이 베끼지 말고 내 브랜드에 맞게.</pre><button type="button">복사</button></div><p class="done">이미지는 Claude Code 입력창에 끌어다 놓으면 첨부돼요.</p></section>
-<section class="step"><span class="badge"><i style="background:#fff"></i>STEP 3</span><h3><small>impeccable</small>Impeccable</h3><p class=sub>명령어 하나로 폰트·여백·색을 부분별로 다듬어요.</p><div class="copy line"><pre>npx skills add https://github.com/pbakaus/impeccable --skill impeccable</pre><button type="button">복사</button></div><ol class="do"><li><span class="n">1</span><span>처음에 서비스 정보를 알려줘요.</span></li></ol><div class="copy line"><pre>/impeccable init</pre><button type="button">복사</button></div><p class="lbl">필요할 때마다</p><ul class="chk"><li><span><code>/impeccable critique</code> 뭐가 별로인지 피드백</span></li><li><span><code>/impeccable typeset</code> 폰트가 어색할 때</span></li><li><span><code>/impeccable layout</code> 여백·배치가 답답할 때</span></li><li><span><code>/impeccable bolder</code> · <code>quieter</code> 밋밋하거나 과할 때</span></li><li><span><code>/impeccable polish</code> 배포 전 마지막 점검</span></li></ul></section>
+
+<section class="step"><span class="badge"><i style="background:#ff7a59"></i>STEP 1</span><h3><small>frontend-design · Anthropic 공식</small>Frontend Design</h3><p class=sub>주제에 맞는 디자인 방향부터 정하고 만들어요.</p>
+<ol class="do"><li><span class="n">1</span><span>Claude Code에 입력해요.</span></li></ol>
+<div class="copy line"><pre>/plugin install frontend-design@claude-plugins-official</pre><button type="button">복사</button></div>
+<p class="lbl">깔아두면 화면 만들 때 알아서 써요</p>
+<div class="copy"><pre class="ko">동네 빵집 홈페이지 만들어줘. 흔한 AI 느낌 말고 디자인 방향부터 정하고 시작해줘.</pre><button type="button">복사</button></div>
+<p class="done">색·글꼴·레이아웃 계획을 먼저 보여주고 만들어요.</p></section>
+
+<section class="step"><span class="badge"><i style="background:#3ee08f"></i>STEP 2</span><h3><small>taste-skill</small>Taste</h3><p class=sub>레퍼런스를 읽고 디자인 방향을 잡아요.</p>
+<div class="copy line"><pre>npx skills add https://github.com/Leonxlnx/taste-skill --skill &quot;design-taste-frontend&quot;</pre><button type="button">복사</button></div>
+<p class="lbl">핵심은 레퍼런스예요</p>
+<div class="copy"><pre class="ko">taste 스킬로 첨부한 이미지 느낌을 살려서 ○○ 랜딩페이지 만들어줘.</pre><button type="button">복사</button></div>
+<div class="copy"><pre class="ko">taste 스킬로 [홈페이지 주소] 분위기를 참고해서 ○○ 랜딩페이지 만들어줘. 똑같이 베끼지 말고 내 브랜드에 맞게.</pre><button type="button">복사</button></div>
+<p class="done">이미지는 Claude Code 입력창에 끌어다 놓으면 첨부돼요.</p></section>
+
+<section class="step"><span class="badge"><i style="background:#8b7bff"></i>STEP 3</span><h3><small>impeccable</small>Impeccable</h3><p class=sub>명령어 한 줄로 폰트·여백·정렬을 마감해요.</p>
+<div class="copy line"><pre>npx skills add https://github.com/pbakaus/impeccable --skill impeccable</pre><button type="button">복사</button></div>
+<ol class="do"><li><span class="n">1</span><span>처음에 서비스 정보를 알려줘요.</span></li></ol>
+<div class="copy line"><pre>/impeccable init</pre><button type="button">복사</button></div>
+<p class="lbl">필요할 때마다</p>
+<ul class="chk"><li><span><code>/impeccable critique</code> 뭐가 별로인지 점수·피드백</span></li><li><span><code>/impeccable typeset</code> 폰트가 어색할 때</span></li><li><span><code>/impeccable layout</code> 여백·정렬이 답답할 때</span></li><li><span><code>/impeccable polish</code> 배포 전 마지막 마감</span></li></ul></section>
+
 <h2>3개 같이 쓰는 순서</h2>
-<ul class="chk"><li><span>Taste로 레퍼런스 넣고 첫 버전 뽑기</span></li><li><span>Avoid AI Design으로 AI 티 진단·제거</span></li><li><span>Impeccable polish로 디테일 마감</span></li></ul>
+<ul class="chk"><li><span>Taste로 레퍼런스 넣고 방향 잡기</span></li><li><span>Frontend Design이 주제에 맞게 만들기</span></li><li><span>Impeccable polish로 디테일 마감</span></li></ul>
 <h2>주의</h2>
-<ul class="warn"><li>결과가 이상하면 "이번엔 ○○ 스킬만 써줘"처럼 하나만 지정하세요.</li><li>2026년 9월 기준 설치법이에요. 스킬 업데이트에 따라 명령어가 바뀔 수 있어요.</li></ul>
-<p class="src">출처 · <a href="https://github.com/funboy322/avoid-ai-design" target="_blank" rel="noopener">avoid-ai-design</a> · <a href="https://github.com/Leonxlnx/taste-skill" target="_blank" rel="noopener">taste-skill</a> · <a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">impeccable</a></p>
+<ul class="warn"><li>결과가 이상하면 "이번엔 ○○ 스킬만 써줘"처럼 하나만 지정하세요.</li><li>2026년 10월 기준 설치법이에요. 스킬 업데이트에 따라 명령어가 바뀔 수 있어요.</li></ul>
+<p class="src">출처 · <a href="https://github.com/anthropics/claude-plugins-official" target="_blank" rel="noopener">claude-plugins-official</a> · <a href="https://github.com/Leonxlnx/taste-skill" target="_blank" rel="noopener">taste-skill</a> · <a href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">impeccable</a></p>
 
 <p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
 <p class="sign">From. ai 술사 | 성준</p>
