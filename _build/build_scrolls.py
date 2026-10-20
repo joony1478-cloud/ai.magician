@@ -297,7 +297,7 @@ PAGES.append(dict(
 <h2>이유는 두 가지예요</h2>
 <ol class="prep"><li><span class="n">1</span><span>한국어에 영어 번역투가 남아서<small>단어는 한국어인데 문장 구조가 영어를 옮긴 것 같아요.</small></span></li>
 <li><span class="n">2</span><span>AI가 내 말투를 본 적이 없어서<small>"자연스럽게"라고 해도 AI가 받는 건 사실상 주제뿐이에요.</small></span></li></ol>
-{prep(["Claude Code (1단계용 · 건너뛰어도 돼요)", "프로젝트 기능이 있는 클로드 또는 ChatGPT (2~3단계)"])}
+{prep(["Claude Code (1단계용 · 건너뛰어도 돼요)", "클로드 (프로젝트 기능 · 2~3단계)"])}
 {tip("클로드 코드가 없어도 STEP 2~3만 해도 효과가 있어요.")}
 {step("STEP 1", "번역투 잡는 스킬 설치", "한글 AI 글의 티를 줄여주는 im-not-ai 스킬이에요. 건너뛰어도 돼요.",
   do(["Claude Code에 두 줄을 차례로 입력해요."]) + line("/plugin marketplace add epoko77-ai/im-not-ai") + line("/plugin install humanize-korean@im-not-ai")
@@ -305,10 +305,10 @@ PAGES.append(dict(
   + done("‘AI 기술을 통해 효율을 높일 수 있다’ → ‘AI로 효율을 높인다’")
   + tip('내용(사실·인용)은 그대로, 문체와 리듬만 바꿔요. 출처 · <a href="https://github.com/epoko77-ai/im-not-ai" target="_blank" rel="noopener">github.com/epoko77-ai/im-not-ai</a>'))}
 {step("STEP 2", "샘플 글 3~5개 모으기", "AI가 말투를 배울 재료예요.",
-  do(["내가 직접 쓴 글로 골라요. (AI 글이 섞이면 말투가 흐려져요)", "쓰려는 글과 같은 종류로 골라요. (캡션이면 캡션)", "글마다 파일 하나로 저장해요. (예: 인스타캡션_01.txt)", "제목·해시태그·광고 문구는 빼고 본문만 남겨요."])
+  do(["내가 직접 쓴 글로 골라요. (AI 글이 섞이면 말투가 흐려져요)", "쓰려는 글과 같은 종류로 골라요. (캡션이면 캡션)", "글마다 파일 하나로 저장해요. (예: 인스타캡션_01.txt)"])
   + tip("좋아하는 작가·크리에이터 글을 넣어도 돼요. 그 사람 문체로 써줘요."))}
 {step("STEP 3", "프로젝트에 넣고 말투 학습", "한 번만 세팅하면 계속 써요.",
-  do(["클로드 또는 ChatGPT에서 프로젝트를 새로 만들어요.", "STEP 2 파일들을 프로젝트 파일(지식)에 추가해요.", "아래 프롬프트를 프로젝트 지침(Instructions)에 붙여넣어요."])
+  do(["클로드에서 프로젝트를 새로 만들어요.", "STEP 2 파일들을 프로젝트 파일(지식)에 추가해요.", "아래 프롬프트를 프로젝트 지침(Instructions)에 붙여넣어요."])
   + lbl("내 글을 넣었다면") + block(PROMPT_HEAD_MINE + "\n\n" + PROMPT_BODY)
   + lbl("작가·크리에이터 글을 넣었다면 (이름만 바꿔서)") + block(PROMPT_HEAD_AUTHOR + "\n\n" + PROMPT_BODY_AUTHOR)
   + tip("화면 이름과 위치는 업데이트로 바뀔 수 있어요. 안 보이면 ‘프로젝트 → 파일 / 지침’ 메뉴를 찾아주세요."))}
