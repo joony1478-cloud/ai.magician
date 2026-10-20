@@ -89,6 +89,7 @@ body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",s
 a{color:var(--ink);text-underline-offset:3px}
 main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
 .cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.art{display:block;width:100%;height:auto;margin:18px 0 6px;border:1px solid var(--ink)}
 .hi{margin-top:28px;font-size:16px;color:var(--sub)}
 h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
 h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
@@ -283,11 +284,16 @@ PROMPT_BODY = """[1단계: 내 말투 분석]
 □ 같은 문장 구조가 3번 이상 반복되나
 □ 지어낸 사실이 있나
 최종 글만 출력해줘. 검수 과정은 보여주지 마."""
+# 작가 버전: "내 말투" → "문체" (2026-10-21 검토 수정)
+PROMPT_BODY_AUTHOR = (PROMPT_BODY.replace("[1단계: 내 말투 분석]", "[1단계: 문체 분석]").replace('"내 말투 규칙표"', '"문체 규칙표"')
+                      .replace("7. 내가 쓰지 않는 표현", "7. 이 작가가 쓰지 않는 표현").replace("□ 내가 쓰지 않는 표현이", "□ 이 작가가 쓰지 않는 표현이"))
+
 PAGES.append(dict(
-    slug="writing", title="AI 티 나는 글, 자연스럽게 바꾸는 법", desc="번역투 잡는 스킬 + 내 말투를 학습시키는 복붙 프롬프트",
-    cover=("AI 티 나는 글,", "자연스럽게", [("번역투 ✗", "#fff"), ("내 말투 ✓", "#f2e15b")]),
-    h1=("AI 티 나는 글,", "자연스럽게 바꾸는 법"),
+    slug="writing", title="AI티 안나게 자연스러운 글 쓰는법", desc="번역투 잡는 스킬 + 내 말투를 학습시키는 복붙 프롬프트",
+    cover=("AI티 안나게", "자연스러운 글 쓰는법", [("번역투 ✗", "#fff"), ("내 말투 ✓", "#f2e15b")]),
+    h1=("AI티 안나게", "자연스러운 글 쓰는법"),
     body=f"""<p class="lead">"자연스럽게 써줘", "사람이 쓴 것처럼 써줘"<br>라고 해도 똑같이 어색하지 않으셨나요?</p>
+<img class="art" src="art.jpg" alt="의자에 기대 쉬는 사람과 모니터 위에서 마법으로 글을 뽑아내는 픽셀 마법사 캐릭터">
 <h2>이유는 두 가지예요</h2>
 <ol class="prep"><li><span class="n">1</span><span>한국어에 영어 번역투가 남아서<small>단어는 한국어인데 문장 구조가 영어를 옮긴 것 같아요.</small></span></li>
 <li><span class="n">2</span><span>AI가 내 말투를 본 적이 없어서<small>"자연스럽게"라고 해도 AI가 받는 건 사실상 주제뿐이에요.</small></span></li></ol>
@@ -304,7 +310,7 @@ PAGES.append(dict(
 {step("STEP 3", "프로젝트에 넣고 말투 학습", "한 번만 세팅하면 계속 써요.",
   do(["클로드 또는 ChatGPT에서 프로젝트를 새로 만들어요.", "STEP 2 파일들을 프로젝트 파일(지식)에 추가해요.", "아래 프롬프트를 프로젝트 지침(Instructions)에 붙여넣어요."])
   + lbl("내 글을 넣었다면") + block(PROMPT_HEAD_MINE + "\n\n" + PROMPT_BODY)
-  + lbl("작가·크리에이터 글을 넣었다면 (이름만 바꿔서)") + block(PROMPT_HEAD_AUTHOR + "\n\n" + PROMPT_BODY)
+  + lbl("작가·크리에이터 글을 넣었다면 (이름만 바꿔서)") + block(PROMPT_HEAD_AUTHOR + "\n\n" + PROMPT_BODY_AUTHOR)
   + tip("화면 이름과 위치는 업데이트로 바뀔 수 있어요. 안 보이면 ‘프로젝트 → 파일 / 지침’ 메뉴를 찾아주세요."))}
 {step("STEP 4", "결과 확인하고 고치기", "아무 주제나 하나 시켜보세요.",
   block("[주제]에 대한 글을 써줘. 분량은 [ ]자 정도로.") + lbl("마음에 안 들면 규칙표를 고치라고 해요")
