@@ -78,7 +78,7 @@ ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line)
 <p class="hi">안녕하세요 ai 술사 성준입니다.</p>
 <h1>클로드한테<br><em>영상편집 맡기는 법</em></h1>
 <p class="lead"><b>클로드가 이제 전문 영상편집 팀이 됩니다!</b><br>컷편집, 자막부터 효과음, 모션그래픽까지 해줘요.</p>
-<p class="lead">그래서 <b>따라 하고 싶은 영상(레퍼런스)을 보여주면<br>그 스타일 그대로 입혀주는 스킬</b>을 만들었어요.<br>프리미어, 캡컷 몰라도 돼요!</p>
+<p class="lead">그래서 <b>따라 하고 싶은 영상(레퍼런스)을 보여주면<br>그 스타일 그대로 입혀주는 스킬</b>을 만들었어요.<br>프리미어, 캡컷 몰라도 돼요!<br>쓸 줄 알면 거기서 <b>직접 수정</b>도 할 수 있어요.</p>
 <img class="cover" src="editing.jpg" alt="늦은 밤 책상 위, 주황색 블록 캐릭터가 모니터의 영상 편집 타임라인을 보고 있는 그림" style="margin-top:20px;aspect-ratio:3/2" loading="lazy">
 
 <h2>준비물</h2>
@@ -114,7 +114,20 @@ ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line)
 </section>
 
 <section class="step">
-  <span class="badge">STEP 3</span>
+  <span class="badge"><i style="background:#2bb673"></i>STEP 3</span>
+  <h3>귀 달아주기 (whisper)</h3>
+  <p class="sub">클로드는 소리를 못 들어요. 영상을 줘도 화면만 보고, 무슨 말을 하는지는 몰라요.</p>
+  <p class="cap">whisper는 소리를 듣고 글자로 받아써 주는 무료 AI예요. 이걸 달아주면 클로드가 "몇 초에 무슨 말을 했는지" 알게 돼서 말 끊긴 곳 컷, 자막 타이밍, 효과음 위치를 정확하게 맞춰요.</p>
+  <ol class="do">
+    <li><span class="n">1</span>클로드 코드에 이렇게 보내요.</li>
+  </ol>
+  <div class="copy"><pre class="ko">faster-whisper 설치하고, 영상이나 음성 파일을 주면 소리를 듣고 타임스탬프 자막(srt)이랑 전체 대사(txt)로 받아쓰는 whisper 스킬 만들어줘. 한국어 기본, 그래픽카드 있으면 GPU로 돌려줘.</pre><button type="button">복사</button></div>
+  <p class="tip">설치 후엔 "이 영상 들어봐", "뭐라고 말하는지 받아써줘" 하면 돼요. 강의 녹음, 회의 녹음 받아쓰기에도 그대로 써먹어요.</p>
+  <p class="done">처음 한 번은 받아쓰기 모델(약 1.6GB)을 받느라 오래 걸려요.</p>
+</section>
+
+<section class="step">
+  <span class="badge">STEP 4</span>
   <h3>편집 맡기기</h3>
   <p class="sub">영상 두 개를 작업 폴더에 넣고, 한 문장이면 돼요.</p>
   <img class="shot" src="fig_chat.png" alt="클로드 코드 대화창에 촬영본과 레퍼런스를 넣고 편집해줘라고 보내자 클로드가 분석·컷편집·자막·효과음·모션그래픽을 차례로 진행하는 화면" loading="lazy">
@@ -125,11 +138,11 @@ ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line)
   </ol>
   <div class="copy"><pre class="ko">레퍼런스.mp4 스타일 분석해서 촬영본.mp4 편집해줘. 컷 리듬이랑 자막 스타일은 레퍼런스랑 똑같이, 효과음은 효과음 폴더에서 골라 넣고, 설명하는 부분엔 모션그래픽도 넣어줘.</pre><button type="button">복사</button></div>
   <p class="tip">효과음이 없으면 <a href="https://pixabay.com/sound-effects/" target="_blank" rel="noopener">Pixabay 무료 효과음</a>에서 "pop", "whoosh", "ding" 몇 개만 받아두세요.</p>
-  <p class="done">처음 한 번은 받아쓰기 모델(약 1.6GB)을 받느라 오래 걸려요.</p>
+  <p class="done">완성본은 작업 폴더에 mp4로 저장돼요.</p>
 </section>
 
 <section class="step">
-  <span class="badge">STEP 4</span>
+  <span class="badge">STEP 5</span>
   <h3>말로 다듬기</h3>
   <p class="sub">마음에 안 드는 부분은 그냥 말하면 다시 뽑아줘요.</p>
   <div class="copy line"><pre class="ko">자막 좀 더 크게 해줘</pre><button type="button">복사</button></div>
@@ -137,6 +150,27 @@ ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line)
   <div class="copy line"><pre class="ko">두 번 말한 부분 앞에 거 지워줘</pre><button type="button">복사</button></div>
   <div class="copy line"><pre class="ko">"첫 번째"에 숫자 1 튀어나오는 그래픽 넣어줘</pre><button type="button">복사</button></div>
   <p class="done">자막 오타도 "○○를 △△로 고쳐줘" 하면 끝이에요.</p>
+</section>
+
+<section class="step">
+  <span class="badge"><i style="background:#9b5cff"></i>STEP 6</span>
+  <h3>프리미어·캡컷에서 직접 수정하기</h3>
+  <p class="sub">클로드가 만든 영상도 내 손으로 고칠 수 있어요.</p>
+  <p class="cap">통으로 된 완성본은 고치기 어려우니까, 클로드한테 "레이어로 나눠서" 달라고 하면 돼요. 자막은 자막대로, 소리는 소리대로 따로 받아요.</p>
+  <ol class="do">
+    <li><span class="n">1</span>프리미어를 쓰면 이렇게 보내요.</li>
+  </ol>
+  <div class="copy"><pre class="ko">방금 편집한 영상 프리미어에서 내가 직접 고칠 수 있게 나눠줘. 자막 없는 본편 mp4, 자막만 있는 투명 배경 mov(ProRes 4444), 목소리 wav, 효과음 wav, 자막 srt로 따로 뽑고, 프리미어에서 열면 트랙이 그대로 깔리는 xml 파일도 만들어줘.</pre><button type="button">복사</button></div>
+  <ol class="do">
+    <li><span class="n">2</span><span>프리미어에서 <b>파일 → 프로젝트 열기</b>로 xml을 열면 타임라인이 그대로 깔려요.</span></li>
+    <li><span class="n">3</span>캡컷을 쓰면 이렇게 보내요.</li>
+  </ol>
+  <div class="copy"><pre class="ko">방금 편집한 영상 캡컷에서 내가 직접 고칠 수 있게 나눠줘. 자막 없는 본편 mp4, 목소리 wav, 효과음 wav, 자막 srt로 따로 뽑아줘.</pre><button type="button">복사</button></div>
+  <ol class="do">
+    <li><span class="n">4</span><span>캡컷에 본편·소리를 올리고, 자막은 <b>자막 → 로컬 자막 가져오기</b>로 srt를 불러와요. 글자·글꼴을 캡컷에서 바로 바꿀 수 있어요.</span></li>
+  </ol>
+  <p class="tip">컷 자르기, 자막 수정, 효과음 볼륨·위치는 자유롭게 고쳐요. 화면 속 그래픽(카드, 아이콘 움직임)은 영상에 박혀서 나와요. 그래픽은 STEP 5처럼 말로 고치는 게 빨라요.</p>
+  <p class="done">고친 다음 그대로 내보내기 하면 끝이에요.</p>
 </section>
 
 <h2>주의</h2>
@@ -151,6 +185,8 @@ ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line)
   <li><span>잘 된 쇼츠 하나 저장 → "이 스타일로 편집해줘"</span></li>
   <li><span>매주 같은 레퍼런스로 → 채널 편집 톤 통일</span></li>
   <li><span>마음에 드는 스타일이 생기면 → "이 설정 기억해둬"</span></li>
+  <li><span>강의·회의 녹음 → whisper로 받아쓰고 "요약해줘"</span></li>
+  <li><span>90%는 클로드, 마지막 10%는 프리미어·캡컷에서 내 손으로</span></li>
 </ul>
 
 <p class="src">출처 · HyperFrames (HeyGen 오픈소스) <a href="https://github.com/heygen-com/hyperframes" target="_blank" rel="noopener">github.com/heygen-com/hyperframes</a></p>
