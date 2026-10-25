@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>GPT 답변 수준 확 바꾸는 설정</title>
+<meta name="description" content="사용자 지정 지침에 붙여넣는 복붙용 기본 지침 + 설정 방법">
+<meta property="og:title" content="GPT 답변 수준 확 바꾸는 설정">
+<meta property="og:description" content="사용자 지정 지침에 붙여넣는 복붙용 기본 지침 + 설정 방법">
+<meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/gpt-instructions/">
+<meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/gpt-instructions/cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#f7f5ef;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.art{display:block;width:100%;height:auto;margin:18px 0 6px;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+h2+p{font-size:16px;color:var(--sub);margin-bottom:12px}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ol.prep li small{display:block;color:var(--sub);font-size:14px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+.step>p{margin-top:8px;font-size:16px}
+.shot{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--line)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+table.num{width:100%;margin-top:12px;border-collapse:collapse;font-size:15px}
+table.num td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+/* 비밀코드 100 */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:sticky;top:0;z-index:2;padding:10px 0;background:var(--paper)}
+.pills button{appearance:none;border:1px solid var(--ink);background:#fff;font:600 14px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 12px;cursor:pointer}
+.pills button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cat h3{margin-top:30px;font-weight:800;font-size:20px}
+.cat>p{font-size:15px;color:var(--sub)}
+.code{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 14px 12px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;cursor:pointer}
+.code:hover{border-color:var(--ink)}
+.code .top{display:flex;align-items:baseline;gap:8px}
+.code b{font-family:ui-monospace,Consolas,monospace;font-size:15px}
+.code .w{font-size:13px;color:var(--dim);flex:1}
+.code .c{font-weight:800;font-size:13px;border:1px solid var(--ink);padding:2px 8px}
+.code.ok .c{background:var(--stamp)}
+.code p{margin-top:6px;font-size:15px;color:var(--sub)}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 GPT 답변 수준 확 바꾸는 설정">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>GPT 답변 수준<br><em>확 바꾸는 설정</em></h1>
+<p class="lead">GPT 특징, 뭐 물어보면<br>'좋은 질문이에요'로 시작해서<br>뻔한 말만 늘어놓죠 ㅋㅋ</p>
+<p class="lead">설정에 지침 하나만 넣어놓으면<br><b>답변 수준이 달라집니다!</b></p>
+<img class="art" src="art.jpg" alt="주황 큐브 마법사가 설정 다이얼을 돌려 엉킨 답변 카드를 깔끔한 카드로 바꾸는 장면">
+<h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>ChatGPT (무료도 가능)</span></li><li><span class="n">2</span><span>아래 기본 지침 (복사 버튼)</span></li></ol>
+<section class="step"><span class="badge">STEP 1</span><h3>기본 지침 복사하기</h3><p class=sub>제가 실제로 쓰는 버전이에요.</p><ol class="do"><li><span class="n">1</span><span>아래 지침을 복사해요.</span></li></ol><div class="copy"><pre class="ko">[답변 방식]
+- 칭찬, 인사, 서론 없이 결론부터 말해.
+- 핵심 → 근거 → 다음에 할 일 순서로 정리해.
+- 답변 길이는 질문 수준에 맞춰. 짧게 물으면 짧게 답해.
+- 선택지가 여러 개면 하나를 추천하고, 이유를 한 줄로 말해.
+
+[정확성]
+- 모르면 모른다고 해. 추측이면 [추측]이라고 표시해.
+- 최신 정보나 수치는 검색해서 확인하고 출처를 붙여.
+- 내 말이 틀렸으면 맞장구치지 말고 바로잡아.
+
+[질문 다루기]
+- 내 질문이 애매하면 답하기 전에 1~2개만 되물어.
+- 전문 용어는 쉬운 말로 풀어 쓰고, 같은 말을 반복하지 마.
+- 한국어로 답해.</pre><button type="button">복사</button></div><p class="tip">필요 없는 줄은 지우고, 원하는 규칙은 한 줄씩 추가해도 돼요.</p></section>
+<section class="step"><span class="badge">STEP 2</span><h3>사용자 지정 지침에 붙여넣기</h3><p class=sub>한 번만 해두면 모든 새 대화에 적용돼요.</p><ol class="do"><li><span class="n">1</span><span>프로필 → 설정으로 들어가요.</span></li><li><span class="n">2</span><span>개인 맞춤 설정 → 사용자 지정 지침을 눌러요.</span></li><li><span class="n">3</span><span>복사한 지침을 붙여넣고 저장해요.</span></li></ol><p class="tip">메뉴 이름은 업데이트로 바뀔 수 있어요. 예전 이름은 '맞춤형 지침'이에요.</p></section>
+<section class="step"><span class="badge">STEP 3</span><h3>새 대화에서 확인하기</h3><p class=sub>기존 대화가 아니라 새 대화를 열어야 적용돼요.</p><ol class="do"><li><span class="n">1</span><span>새 대화를 열어요.</span></li><li><span class="n">2</span><span>아래 문장을 그대로 보내봐요.</span></li></ol><div class="copy"><pre class="ko">이번 주말에 할 만한 거 추천해줘</pre><button type="button">복사</button></div><p class="done">서론 없이 결론부터 나오거나, 먼저 되물어보면 성공!</p></section>
+<section class="step"><span class="badge">STEP 4</span><h3>나한테 맞게 한 줄 더하기</h3><p class=sub>내 상황을 알려주면 답변이 더 정확해져요.</p><ol class="do"><li><span class="n">1</span><span>지침 맨 아래에 나에 대한 한 줄을 추가해요.</span></li></ol><div class="copy"><pre class="ko">- 나는 [직업/하는 일]이고, 주로 [용도]에 GPT를 써.</pre><button type="button">복사</button></div><p class="done">예: 나는 마케터고, 주로 광고 문구랑 보고서에 GPT를 써.</p></section>
+<h2>주의</h2>
+<ul class="warn"><li>지침을 넣어도 AI가 100% 정확해지지는 않아요. 숫자·법·건강 관련 내용은 꼭 원문을 직접 확인해주세요.</li></ul>
+<h2>이렇게 써먹어요</h2>
+<ul class="chk"><li><span>보고서·회의록 정리할 때 결론부터 받기</span></li><li><span>애매하게 물어도 되물어줘서 헛답변 줄이기</span></li><li><span>검색이 필요한 질문은 출처까지 한 번에</span></li></ul>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+</script>
+</body>
+</html>
