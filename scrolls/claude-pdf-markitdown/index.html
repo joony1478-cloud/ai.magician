@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>클로드에 PDF 그냥 올리지 마세요</title>
+<meta name="description" content="PDF·워드·엑셀·PPT·음성·유튜브를 클로드가 가장 잘 읽는 MD 파일로 바꿔 토큰 아끼기 — 마크잇다운 설치·사용 가이드">
+<meta property="og:title" content="클로드에 PDF 그냥 올리지 마세요">
+<meta property="og:description" content="PDF·워드·엑셀·PPT·음성·유튜브를 클로드가 가장 잘 읽는 MD 파일로 바꿔 토큰 아끼기 — 마크잇다운 설치·사용 가이드">
+<meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/claude-pdf-markitdown/">
+<meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/claude-pdf-markitdown/cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#fff;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.art{display:block;width:100%;height:auto;margin:18px 0 6px;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+h2+p{font-size:16px;color:var(--sub);margin-bottom:12px}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ol.prep li small{margin-top:2px;display:block;color:var(--sub);font-size:14px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+.step>p{margin-top:8px;font-size:16px}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}.cmp figure{margin:0}.cmp figcaption{font-weight:800;font-size:14px;margin-bottom:6px}.cmp img{display:block;width:100%;height:auto;border:1px solid var(--line)} .shot{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--line)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+table.num{width:100%;margin-top:12px;border-collapse:collapse;font-size:15px}
+table.num td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+/* 비밀코드 100 */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:sticky;top:0;z-index:2;padding:10px 0;background:var(--paper)}
+.pills button{appearance:none;border:1px solid var(--ink);background:#fff;font:600 14px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 12px;cursor:pointer}
+.pills button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cat h3{margin-top:30px;font-weight:800;font-size:20px}
+.cat>p{font-size:15px;color:var(--sub)}
+.code{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 14px 12px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;cursor:pointer}
+.code:hover{border-color:var(--ink)}
+.code .top{display:flex;align-items:baseline;gap:8px}
+.code b{font-family:ui-monospace,Consolas,monospace;font-size:15px}
+.code .w{font-size:13px;color:var(--dim);flex:1}
+.code .c{font-weight:800;font-size:13px;border:1px solid var(--ink);padding:2px 8px}
+.code.ok .c{background:var(--stamp)}
+.code p{margin-top:6px;font-size:15px;color:var(--sub)}
+a.ext{font-weight:800;text-decoration:underline;text-decoration-thickness:2px}a.ext::after{content:" ↗";font-size:.85em}
+a.shotlink{display:block}a.shotlink:hover .shot{opacity:.85}
+.demo{margin-top:16px;border:1px solid var(--ink);background:#fff;overflow:hidden}
+.dm-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);font-size:14px}
+.dm-bar img{width:22px;height:22px;border-radius:6px}.dm-bar .tab{margin-left:auto;font-weight:800;font-size:12px;padding:3px 10px;background:var(--box);border:1px solid var(--line)}
+.dm-body{position:relative;height:230px;background:#faf9f6}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 9px 5px 5px;background:#fff;border:1px solid var(--line);font-size:12.5px;font-weight:600;white-space:nowrap}
+.chip i{font-style:normal;font-weight:800;font-size:10px;color:#fff;padding:3px 5px;background:#e5483c}.chip.md i{background:var(--ink)}
+.dm-u{position:absolute;right:12px;top:14px;max-width:80%;padding:8px 10px;background:var(--box);border-radius:10px;display:grid;gap:6px;justify-items:end}
+.dm-u p{margin:0;font-size:13.5px;font-weight:600;line-height:1.4}
+.dm-a{position:absolute;left:12px;top:120px;display:flex;align-items:center;gap:8px}.dm-a img{width:24px;height:24px;border-radius:6px}
+.dm-in{position:absolute;left:12px;right:12px;bottom:12px;height:40px;display:flex;align-items:center;padding:0 12px;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:13px;color:var(--dim)}
+.dm-drop{position:absolute;inset:8px;display:grid;place-items:center;border:2px dashed var(--ink);background:rgba(242,225,91,.28);font-weight:800;font-size:14px;opacity:0}
+.dm-drag{position:absolute;left:58%;top:6px;display:flex;align-items:flex-end;opacity:0;pointer-events:none}.dm-drag .chip{box-shadow:4px 4px 0 rgba(31,31,31,.18)}.dm-drag svg{margin:0 0 -10px -6px}
+.dm-res{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:12px;border-top:1px solid var(--line)}
+.dm-res figure{margin:0}.dm-res img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+.dm-res figcaption{margin-top:4px;font-size:11.5px;font-weight:800;text-align:center}.dm-res .ar{font-weight:800;font-size:18px}
+.demo .dm-u,.demo .dm-a,.demo .dm-res,.demo .dm-drop,.demo .dm-drag{animation:9s ease-in-out infinite}
+.demo .dm-drag{animation-name:dmDrag}.demo .dm-drop{animation-name:dmDrop}.demo .dm-u{animation-name:dmU}.demo .dm-a{animation-name:dmA}.demo .dm-res{animation-name:dmRes}
+@keyframes dmDrag{0%{opacity:0;left:58%;top:6px}5%{opacity:1;left:58%;top:6px}27%{opacity:1;left:22%;top:150px}31%,100%{opacity:0;left:22%;top:150px}}
+@keyframes dmDrop{0%,9%{opacity:0}14%,27%{opacity:1}31%,100%{opacity:0}}
+@keyframes dmU{0%,33%{opacity:0;transform:translateY(8px)}38%,94%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes dmA{0%,47%{opacity:0;transform:translateY(8px)}53%,94%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes dmRes{0%,59%{opacity:0;transform:translateY(8px)}66%,94%{opacity:1;transform:none}100%{opacity:0}}
+.demo-cap{margin:10px 0 0;font-weight:800;font-size:15px}
+@media (prefers-reduced-motion:reduce){.demo *{animation:none!important}.dm-drag,.dm-drop{display:none}}
+.note{margin-top:14px;padding:12px 14px;background:#eef8f1;border:1px solid #bfe3cb;font-size:15px;line-height:1.55}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 클로드에 PDF 그냥 올리지 마세요">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>클로드에 PDF<br><em>그냥 올리지 마세요</em></h1>
+<p class="lead">클로드는 PDF를 읽을 때<br><b>토큰을 엄청 많이</b> 잡아먹어요.</p>
+<p class="lead">그래서 클로드가 효율적으로 읽을 수 있는<br><b>'MD(마크다운)' 파일</b>로 바꿔서 줘야 합니다.</p>
+<img class="art" src="art.jpg" alt="왼쪽의 크고 무거운 PDF 문서가 화살표를 지나 오른쪽의 작고 가벼운 초록빛 MD 파일로 바뀌는 그림">
+<h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>클로드 데스크톱 앱 <small>'Code' 탭을 써요</small></span></li><li><span class="n">2</span><span>바꿀 파일 (PDF·워드·엑셀·PPT 등)</span></li></ol>
+<section class="step"><span class="badge">STEP 1</span><h3>PDF가 토큰을 많이 먹는 이유</h3><p class=sub>앤트로픽 공식 문서 기준이에요.</p><ol class="do"><li><span class="n">1</span><span>클로드는 PDF를 페이지마다 <b>글자로 한 번, 이미지로 한 번</b> 읽어요.</span></li><li><span class="n">2</span><span>3쪽짜리 예시: 글자만이면 약 1,000토큰, 이미지까지면 약 7,000토큰.</span></li></ol><p class="done">글자만 필요하면 MD로 바꿔 올리는 게 이득이에요.</p></section>
+<section class="step"><span class="badge">STEP 2</span><h3>마크잇다운, 믿을 만한 툴인지 확인</h3><p class=sub>마이크로소프트가 만든 공식 무료 툴이에요.</p><a class="shotlink" href="https://github.com/microsoft/markitdown" target="_blank" rel="noopener"><img class="shot" src="gh_top.jpg" alt="깃허브 microsoft/markitdown 저장소 상단" loading="lazy"></a><ol class="do"><li><span class="n">1</span><span>공식 페이지: 깃허브 <a class="ext" href="https://github.com/microsoft/markitdown" target="_blank" rel="noopener">microsoft/markitdown</a></span></li><li><span class="n">2</span><span>PDF·PPT·워드·엑셀·사진 속 글자·음성·유튜브 링크까지 MD로 바꿔요.</span></li></ol><p class="note"><b>깃허브는 확인용이에요.</b> 여기서 아무것도 다운로드하거나 누를 필요 없어요. 설치는 다음 단계에서 클로드가 해줘요.</p></section>
+<section class="step"><span class="badge">STEP 3</span><h3>클로드한테 설치·변환 맡기기</h3><p class=sub>명령어 몰라도 돼요. 한 줄씩 따라 하세요.</p><ol class="do"><li><span class="n">1</span><span>클로드 데스크톱 앱을 열고 <b>'Code' 탭</b>으로 이동해요.</span></li></ol><ol class="do"><li><span class="n">2</span><span>채팅창에 아래 문장을 입력해요. 클로드가 알아서 설치해요.</span></li></ol><div class="copy"><pre class="ko">마크잇다운(markitdown) 설치해줘</pre><button type="button">복사</button></div><p class="tip">파이썬(3.10 이상)이 필요해요. 없으면 "파이썬부터 설치해줘"라고 먼저 부탁해 보세요.</p><ol class="do"><li><span class="n">3</span><span>바꿀 PDF를 채팅창에 끌어다 놓고 아래 문장을 입력해요.</span></li></ol><div class="copy"><pre class="ko">이 파일 MD로 바꿔줘</pre><button type="button">복사</button></div><div class="demo" role="img" aria-label="클로드 데스크톱 앱 Code 탭에 운영계획서.pdf를 끌어다 놓고 MD로 바꿔달라고 하면 운영계획서.md가 생기는 과정">
+<div class="dm-bar"><img src="claude_icon.jpg" alt=""><b>Claude</b><span class="tab">Code</span></div>
+<div class="dm-body">
+ <div class="dm-u"><span class="chip pdf"><i>PDF</i>운영계획서.pdf</span><p>이 파일 MD로 바꿔줘</p></div>
+ <div class="dm-a"><img src="claude_icon.jpg" alt=""><span class="chip md"><i>MD</i>운영계획서.md</span></div>
+ <div class="dm-in">메시지 입력</div>
+ <div class="dm-drop">여기에 놓기</div>
+ <div class="dm-drag"><span class="chip pdf"><i>PDF</i>운영계획서.pdf</span><svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 2l15 10-7 1.5L9 21z" fill="#1f1f1f" stroke="#fff" stroke-width="1.5"/></svg></div>
+</div>
+<div class="dm-res"><figure><img src="pdf_page.jpg" alt=""><figcaption>운영계획서.pdf</figcaption></figure><span class="ar">→</span><figure><img src="md_text.jpg" alt=""><figcaption>운영계획서.md</figcaption></figure></div>
+</div><p class="demo-cap">PDF 끌어다 놓고 'MD로 바꿔줘' 한마디면 끝 → 같은 폴더에 .md 파일이 생겨요</p><ol class="do"><li><span class="n">4</span><span>이제 클로드에는 PDF 대신 <b>이 .md 파일</b>을 올리세요.</span></li></ol><p class="done">같은 내용, 훨씬 적은 토큰으로 읽혀요.</p></section>
+<section class="step"><span class="badge">선택</span><h3>명령어가 편한 분만 보세요</h3><p class=sub>터미널에서 두 줄로도 돼요. 안 해도 됩니다.</p><p class="lbl">① 설치 (한 번만)</p><div class="copy line"><pre>pip install &quot;markitdown[all]&quot;</pre><button type="button">복사</button></div><p class="lbl">② 변환</p><div class="copy line"><pre>markitdown 파일.pdf -o 파일.md</pre><button type="button">복사</button></div><p class="done">파일.md가 만들어지면 그걸 클로드에 올려요.</p></section>
+<section class="step"><span class="badge">STEP 4</span><h3>진짜 바꿔봤어요</h3><p class=sub>같은 계획서, 왼쪽 PDF → 오른쪽 MD.</p><div class="cmp"><figure><figcaption>PDF 원본</figcaption><img src="pdf_page.jpg" alt="운영계획서 PDF 1쪽" loading="lazy"></figure><figure><figcaption>변환된 MD</figcaption><img src="md_text.jpg" alt="마크잇다운으로 바꾼 운영계획서 MD 텍스트" loading="lazy"></figure></div><p class="done">제목·목록·표 내용이 글자 그대로 남아요.</p></section>
+<h2>이렇게 써먹어요</h2>
+<ul class="chk"><li><span>워드·엑셀·PPT 자료 → MD로 바꿔서 올리기</span></li><li><span>회의 녹음 파일 → 받아쓰기한 글로 정리</span></li><li><span>유튜브 링크 → 요약할 때 글로 먼저 바꾸기</span></li></ul>
+<h2>이럴 땐 그냥 올리세요</h2>
+<ul class="warn"><li>그래프·사진이 중요한 PDF는 그대로 올려요. MD에는 글자만 남아요.</li></ul>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+
+</script>
+</body>
+</html>
