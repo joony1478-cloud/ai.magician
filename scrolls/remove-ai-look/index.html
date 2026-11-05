@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>고객을 사로잡는 컨텐츠 디자인 [카드뉴스/광고]</title>
+<meta name="description" content="자영업자·사장님·크리에이터를 위한 캐러셀(카드뉴스)·광고 디자인, AI 티 빼는 3가지와 복붙 프롬프트">
+<meta property="og:title" content="고객을 사로잡는 컨텐츠 디자인 [카드뉴스/광고]">
+<meta property="og:description" content="자영업자·사장님·크리에이터를 위한 캐러셀(카드뉴스)·광고 디자인, AI 티 빼는 3가지와 복붙 프롬프트">
+<meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/remove-ai-look/">
+<meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/remove-ai-look/cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#fff;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.art{display:block;width:100%;height:auto;margin:18px 0 6px;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+h2+p{font-size:16px;color:var(--sub);margin-bottom:12px}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ol.prep li small{margin-top:2px;display:block;color:var(--sub);font-size:14px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+.step>p{margin-top:8px;font-size:16px}
+.shot{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--line)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+table.num{width:100%;margin-top:12px;border-collapse:collapse;font-size:15px}
+table.num td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+/* 비밀코드 100 */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:sticky;top:0;z-index:2;padding:10px 0;background:var(--paper)}
+.pills button{appearance:none;border:1px solid var(--ink);background:#fff;font:600 14px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 12px;cursor:pointer}
+.pills button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cat h3{margin-top:30px;font-weight:800;font-size:20px}
+.cat>p{font-size:15px;color:var(--sub)}
+.code{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 14px 12px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;cursor:pointer}
+.code:hover{border-color:var(--ink)}
+.code .top{display:flex;align-items:baseline;gap:8px}
+.code b{font-family:ui-monospace,Consolas,monospace;font-size:15px}
+.code .w{font-size:13px;color:var(--dim);flex:1}
+.code .c{font-weight:800;font-size:13px;border:1px solid var(--ink);padding:2px 8px}
+.code.ok .c{background:var(--stamp)}
+.code p{margin-top:6px;font-size:15px;color:var(--sub)}
+a.ext{font-weight:800;text-decoration:underline;text-decoration-thickness:2px}a.ext::after{content:" ↗";font-size:.85em}
+.step ul.chk{margin-top:14px}
+table.terms{width:100%;margin-top:14px;border-collapse:collapse;font-size:15px}
+table.terms th{text-align:left;font-size:13px;color:var(--dim);font-weight:800;padding:0 0 6px;border-bottom:1px solid var(--ink)}
+table.terms td{padding:9px 0;border-bottom:1px dashed var(--line);vertical-align:baseline}
+table.terms td:first-child{width:76px;font-weight:800;white-space:nowrap}
+.swap{margin-top:8px;display:grid;gap:8px}
+.swap div{padding:12px 14px;border:1px solid var(--line)}
+.swap s{color:var(--dim);font-size:14px}
+.swap p{margin-top:2px;font-size:16px;font-weight:600}
+.src a{color:inherit}
+h1 .tg{display:block;margin-top:6px;font-size:.5em;font-weight:800}
+img.art+img.art{margin-top:14px}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 고객을 사로잡는 컨텐츠 디자인 제목">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>고객을 사로잡는<br><em>컨텐츠 디자인 <small class=tg>[카드뉴스/광고]</small></em></h1>
+<p class="lead">카드뉴스, 이벤트, 광고 디자인,<br>AI로 만들면 <b>묘하게 티가 나요..</b></p>
+<p class="lead">열심히 준비한 서비스가 저품질로 느껴지고,<br>그냥 넘겨질 수 있습니다.</p>
+<img class="art" src="ba.png" alt="왼쪽은 글자와 장식이 꽉 찬 AI 티 나는 카드, 오른쪽은 어두운 커피 사진에 문장 두 줄만 있는 카드">
+<img class="art" src="art.jpg" alt="주황색 큐브 마법사가 여백 많은 포스터를 마법봉으로 다듬고 장식 많은 종이들은 날아가는 장면">
+<h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>쓰던 AI 하나 <small>GPT·제미나이·클로드 어디든 돼요</small></span></li><li><span class="n">2</span><span>마음에 드는 광고·캐러셀 이미지 <small>저장해 둔 게시물이면 충분해요</small></span></li><li><span class="n">3</span><span>가게 이름·상품·혜택 <small>한 줄씩 적어 두면 돼요</small></span></li></ol>
+<section class="step"><span class="badge">STEP 1</span><h3>고객이 넘기는 이유, 몇 개나 걸리나요?</h3><p class=sub>AI 결과물에 자주 보이는 습관이에요.</p><img class="shot" src="ba2.png" alt="왼쪽은 베이지 바탕의 AI 티 나는 카드, 오른쪽은 어두운 케이크 사진에 문장 두 줄만 있는 카드" loading="lazy"><ul class="chk"><li><span>빈틈없이 꽉 찬 화면</span></li><li><span>제목마다 붙은 따옴표</span></li><li><span>베이지 바탕 + 주황 포인트</span></li><li><span>주제가 달라도 늘 같은 폰트</span></li><li><span>그라데이션·이모지 남발</span></li><li><span>혁신적인, 모든 것 같은 뻔한 문구</span></li></ul><p class="tip">두 그림은 설명용으로 직접 만든 예시예요.</p><p class="done">걸린 항목은 아래 3가지로 고쳐요.</p></section>
+<section class="step"><span class="badge">STEP 2</span><h3>내 컨텐츠 느낌은 내가 골라요</h3><p class=sub>해결 ① 내 취향 더하기.</p><ol class="do"><li><span class="n">1</span><span>마음에 드는 광고·캐러셀 <b>레퍼런스</b>를 골라요.</span></li><li><span class="n">2</span><span>레퍼런스 이미지를 클로드 창에 끌어다 놓아요.</span></li></ol><img class="shot" src="drag.gif" alt="저장한 레퍼런스 이미지를 클로드 채팅 입력창으로 끌어다 놓는 화면" loading="lazy"><ol class="do"><li><span class="n">3</span><span>아래 프롬프트로 레퍼런스를 분석시켜요.</span></li></ol><div class="copy"><pre class="ko">첨부한 이미지는 내가 참고하려는 레퍼런스야.
+
+1. 먼저 이 이미지의 폰트, 위계(제목과 본문 크기 차이), 정렬, 여백, 컬러 쓰는 방식을 분석해서 글로 정리해줘.
+2. 그 분석대로 [카드뉴스 / 광고] 디자인을 새로 만들어줘.
+3. 컬러는 [메인 색] + [포인트 색]으로 바꿔줘.
+
+문구·그림·구도는 그대로 베끼지 말고 새로 만들어줘.</pre><button type="button">복사</button></div><ol class="do"><li><span class="n">4</span><span>내 서비스·상품 사진을 여러 장 넣어요.</span></li><li><span class="n">5</span><span>원하는 느낌을 말로 묘사해요.</span></li></ol><div class="copy"><pre class="ko">첨부한 사진은 내 [서비스 / 상품] 사진이야. 이 사진들을 써서 만들어줘.
+
+원하는 느낌:
+[예: 퇴근길에 들르고 싶어지는 동네 베이커리.
+어두운 배경에 빵만 밝게 떠오르고,
+고급스럽지만 부담스럽지 않게.]</pre><button type="button">복사</button></div><p class="tip">레퍼런스는 그대로 베끼면 저작권 문제가 생길 수 있어요. 느낌만 가져와요.</p><p class="done">내 상품 사진으로 내가 고른 느낌의 시안이 나와요.</p></section>
+<section class="step"><span class="badge">STEP 3</span><h3>예쁘게 해줘, 이 말은 잊으세요</h3><p class=sub>해결 ② AI가 알아듣는 말로 설명하기.</p><table class="terms"><tr><th>이 단어로</th><th>이렇게 말해요</th></tr><tr><td>여백</td><td>가장자리를 넓게 비워줘</td></tr><tr><td>위계</td><td>메뉴 이름을 제일 크게, 설명은 그 절반 크기로</td></tr><tr><td>정렬</td><td>전부 왼쪽 정렬로 맞춰줘</td></tr><tr><td>대비</td><td>흰 바탕에 진한 검정 글자로</td></tr><tr><td>강조</td><td>포인트 색은 혜택 단어 하나에만</td></tr><tr><td>덜어내기</td><td>상품·혜택·가게 이름만 남기고 지워줘</td></tr></table><p class="lbl">말 바꾸기 전 → 후</p><div class="swap"><div><s>예쁘게 해줘</s><p>여백 넓게, 메뉴 이름 크게, 왼쪽 정렬로 해줘</p></div><div><s>고급스럽게</s><p>흰 바탕에 검정 글자, 포인트 색 하나만 써줘</p></div><div><s>눈에 띄게</s><p>혜택 단어 하나만 크게, 포인트 색으로 해줘</p></div><div><s>깔끔하게</s><p>상품·혜택·가게 이름만 남기고 지워줘</p></div></div><p class="done">마음에 안 들면 다시 뽑지 말고 이 말로 고쳐요.</p></section>
+<section class="step"><span class="badge">STEP 4</span><h3>프롬프트 끝에 이 목록만 붙여요</h3><p class=sub>해결 ③ AI 특유의 패턴 피하기.</p><ol class="do"><li><span class="n">1</span><span>아래 금지 목록을 복사해요.</span></li></ol><div class="copy"><pre class="ko">쓰지 마:
+- 화면을 빈틈없이 채우기
+- 제목에 따옴표 붙이기
+- 베이지 바탕 + 주황 강조
+- 지정한 것 말고 다른 폰트 섞기
+- 그라데이션 배경·글자
+- 이모지
+- 같은 모양 박스 나란히 줄 세우기
+- 혁신적인, 모든 것, 한눈에, 비결 같은 뻔한 문구</pre><button type="button">복사</button></div><ol class="do"><li><span class="n">2</span><span>쓰던 프롬프트 맨 끝에 붙여요.</span></li><li><span class="n">3</span><span>그래도 나오면 그 항목만 콕 집어 빼달라고 해요.</span></li></ol><p class="done">AI 습관을 뺀 광고 시안을 받아요.</p></section>
+<section class="step"><span class="badge">STEP 5</span><h3>복붙 3종, [ ] 칸만 바꾸면 끝</h3><p class=sub>금지 목록까지 다 들어 있어요.</p><ol class="do"><li><span class="n">1</span><span>레퍼런스 이미지를 AI 채팅에 첨부해요.</span></li><li><span class="n">2</span><span>프롬프트를 복사해서 [가게 이름]·[상품]·[혜택] 칸을 내 걸로 바꿔요.</span></li></ol><p class="lbl">캐러셀 (카드뉴스)</p><div class="copy"><pre class="ko">인스타 캐러셀(카드뉴스)을 만들어줘. 이미지로 만들 수 없으면 HTML로 만들어줘.
+
+가게 이름: [가게 이름]
+상품: [상품, 예: 겨울 신메뉴 귤 찹쌀떡]
+혜택: [혜택, 예: 12월 한 달 한정]
+보는 사람: [예: 동네 30대 직장인]
+장수: [예: 5장]
+크기: 세로 4:5 (1080x1350)
+폰트: [예: 프리텐다드 굵게]. 똑같이 못 쓰면 가장 비슷한 느낌으로.
+색: 바탕 [예: 흰색] + 포인트 [예: 코랄 레드], 이 2개만.
+첨부한 레퍼런스는 그대로 베끼지 말고 느낌(분위기·여백·색 쓰는 방식)만 참고해줘. 구도·문구·그림은 새로 만들어줘.
+
+장 구성:
+- 1장 표지: 고객이 얻는 것 한 문장
+- 가운데 장: 이걸 고를 이유 한 장에 하나씩
+- 마지막 장: 가게 이름 + 혜택 + 오는 방법
+
+지켜줘:
+- 내가 준 내용만 쓰고, 없는 수치·후기는 지어내지 마
+- 한 장에 문장 하나
+- 제목은 크게, 나머지는 작게
+- 전부 왼쪽 정렬
+- 여백은 넓게
+
+쓰지 마:
+- 화면을 빈틈없이 채우기
+- 제목에 따옴표 붙이기
+- 베이지 바탕 + 주황 강조
+- 지정한 것 말고 다른 폰트 섞기
+- 그라데이션 배경·글자
+- 이모지
+- 같은 모양 박스 나란히 줄 세우기
+- 혁신적인, 모든 것, 한눈에, 비결 같은 뻔한 문구</pre><button type="button">복사</button></div><p class="lbl">광고 디자인</p><div class="copy"><pre class="ko">광고 디자인 이미지를 만들어줘. 이미지로 만들 수 없으면 HTML로 만들어줘.
+
+종류: [메뉴 / 이벤트 / 신상품 광고 중 하나]
+가게 이름: [가게 이름]
+상품: [상품, 예: 겨울 신메뉴 귤 찹쌀떡]
+혜택: [혜택, 예: 12월 한 달 한정]
+보는 사람: [예: 동네 30대 직장인]
+버튼 문구: [예: 이번 주 예약하기]
+크기: 세로 4:5 (1080x1350)
+폰트: [예: 프리텐다드 굵게]. 똑같이 못 쓰면 가장 비슷한 느낌으로.
+색: 바탕 [예: 흰색] + 포인트 [예: 코랄 레드], 이 2개만.
+첨부한 레퍼런스는 그대로 베끼지 말고 느낌(분위기·여백·색 쓰는 방식)만 참고해줘. 구도·문구·그림은 새로 만들어줘.
+
+지켜줘:
+- 내가 준 내용만 쓰고, 없는 수치·후기는 지어내지 마
+- 혜택 문장을 제일 크게
+- 포인트 색은 혜택 단어와 버튼에만
+- 여백은 넓게
+
+쓰지 마:
+- 화면을 빈틈없이 채우기
+- 제목에 따옴표 붙이기
+- 베이지 바탕 + 주황 강조
+- 지정한 것 말고 다른 폰트 섞기
+- 그라데이션 배경·글자
+- 이모지
+- 같은 모양 박스 나란히 줄 세우기
+- 혁신적인, 모든 것, 한눈에, 비결 같은 뻔한 문구</pre><button type="button">복사</button></div><p class="lbl">릴스 썸네일</p><div class="copy"><pre class="ko">릴스 썸네일을 만들어줘. 이미지로 만들 수 없으면 HTML로 만들어줘.
+
+가게 이름: [가게 이름]
+상품: [상품, 예: 겨울 신메뉴 귤 찹쌀떡]
+혜택: [혜택, 예: 12월 한 달 한정]
+위 내용으로 고객이 멈출 문구를 2줄로 써줘.
+사진: [첨부한 상품 사진 / 사진 없이 그래픽만]
+크기: 세로 9:16 (1080x1920)
+폰트: [예: 프리텐다드 굵게]. 똑같이 못 쓰면 가장 비슷한 느낌으로.
+색: 바탕 [예: 흰색] + 포인트 [예: 코랄 레드], 이 2개만.
+첨부한 레퍼런스는 그대로 베끼지 말고 느낌(분위기·여백·색 쓰는 방식)만 참고해줘. 구도·문구·그림은 새로 만들어줘.
+
+지켜줘:
+- 내가 준 내용만 쓰고, 없는 수치·후기는 지어내지 마
+- 글자는 문구 2줄과 작은 가게 이름만
+- 문구는 폰에서 멀리 봐도 읽히게 아주 크게
+- 위아래가 잘려도 보이게 가운데에 모으기
+- 강조는 단어 하나만
+
+쓰지 마:
+- 화면을 빈틈없이 채우기
+- 제목에 따옴표 붙이기
+- 베이지 바탕 + 주황 강조
+- 지정한 것 말고 다른 폰트 섞기
+- 그라데이션 배경·글자
+- 이모지
+- 같은 모양 박스 나란히 줄 세우기
+- 혁신적인, 모든 것, 한눈에, 비결 같은 뻔한 문구</pre><button type="button">복사</button></div><p class="tip">한글이 깨지면 글자 없는 바탕만 받아서 글자는 직접 얹어요.</p><p class="done">우리 가게 내용이 들어간 시안이 나와요.</p></section>
+<h2>올리기 전에 이렇게 써먹어요</h2>
+<ul class="chk"><li><span>캐러셀 다 뽑았을 때 → STEP 1 체크리스트로 훑기</span></li><li><span>메뉴·이벤트 광고 여러 개 만들 때 → 금지 목록 고정으로 붙이기</span></li><li><span>고쳐달라고 할 때 → STEP 3 말로 바꿔 말하기</span></li></ul>
+<p class="src">근거: NielsenIQ 2024 연구(2,000명 이상, 그중 약 150명 뇌파 측정)에서 사람들은 AI 광고 대부분을 알아봤고, 잘 만들었다고 평가된 AI 광고도 일반 광고보다 기억 활성화가 약했어요. <a class="ext" href="https://nielseniq.com/global/en/news-center/2024/niq-research-uncovers-hidden-consumer-attitudes-toward-ai-generated-ads/" target="_blank" rel="noopener">원문 보기</a></p>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+
+</script>
+</body>
+</html>
