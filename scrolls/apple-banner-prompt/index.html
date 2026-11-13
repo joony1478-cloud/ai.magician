@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>애플처럼 보이는 제품 배너 프롬프트</title>
+<meta name="description" content="사진 한 장으로 애플 홈페이지 배너 같은 상세페이지 첫 화면 만들기">
+<meta property="og:title" content="애플처럼 보이는 제품 배너 프롬프트">
+<meta property="og:description" content="사진 한 장으로 애플 홈페이지 배너 같은 상세페이지 첫 화면 만들기">
+<meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/apple-banner-prompt/">
+<meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/apple-banner-prompt/cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#fff;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.art{display:block;width:100%;height:auto;margin:18px 0 6px;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+h2+p{font-size:16px;color:var(--sub);margin-bottom:12px}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ol.prep li small{margin-top:2px;display:block;color:var(--sub);font-size:14px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+.step>p{margin-top:8px;font-size:16px}
+.shot{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--line)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+table.num{width:100%;margin-top:12px;border-collapse:collapse;font-size:15px}
+table.num td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+/* 비밀코드 100 */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:sticky;top:0;z-index:2;padding:10px 0;background:var(--paper)}
+.pills button{appearance:none;border:1px solid var(--ink);background:#fff;font:600 14px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 12px;cursor:pointer}
+.pills button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cat h3{margin-top:30px;font-weight:800;font-size:20px}
+.cat>p{font-size:15px;color:var(--sub)}
+.code{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 14px 12px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;cursor:pointer}
+.code:hover{border-color:var(--ink)}
+.code .top{display:flex;align-items:baseline;gap:8px}
+.code b{font-family:ui-monospace,Consolas,monospace;font-size:15px}
+.code .w{font-size:13px;color:var(--dim);flex:1}
+.code .c{font-weight:800;font-size:13px;border:1px solid var(--ink);padding:2px 8px}
+.code.ok .c{background:var(--stamp)}
+.code p{margin-top:6px;font-size:15px;color:var(--sub)}
+table.terms{width:100%;margin-top:14px;border-collapse:collapse;font-size:15px}
+table.terms th{text-align:left;font-size:13px;color:var(--dim);font-weight:800;padding:0 0 6px;border-bottom:1px solid var(--ink)}
+table.terms td{padding:9px 0;border-bottom:1px dashed var(--line);vertical-align:top}table.terms td.w{font-weight:600;padding-right:10px;width:48%}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.cmp figure{margin:0;background:var(--card);border:1px solid var(--line);padding:6px}
+.cmp figure.good{border-color:var(--ink)}
+.cmp img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.cmp figcaption{margin-top:6px;font-size:13px;font-weight:600;color:var(--sub);line-height:1.4}
+.cmp figure.good figcaption{color:var(--ink)}
+.cmp figure.good figcaption::before{content:"✓ ";font-weight:800}
+ol.rules{margin-top:12px}ol.rules li b{font-weight:800}
+.step .lbl{margin-top:18px}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 애플처럼 보이는 제품 배너 프롬프트 제목">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>애플처럼 보이는<br><em>제품 배너 프롬프트</em></h1>
+<p class="lead">폰으로 대충 찍은 제품 사진,<br><b>애플 홈페이지 배너처럼</b> 보이면 좋겠죠?</p>
+<p class="lead">스튜디오도 디자이너도 없이 사진 한 장과 프롬프트 하나면 돼요.<br>제가 초간단으로 알려드릴게요.</p>
+<img class="art" src="art.jpg" alt="주황색 큐브 마법사가 책상 위 폰 사진 한 장을 하얀 애플식 배너로 바꾸는 장면">
+<p class="lbl">제가 직접 해본 결과예요</p>
+<div class="cmp"><figure><img src="before.jpg" alt="화장대 위에서 폰으로 찍은 크림 단지" loading="lazy"><figcaption>비포 · 화장대에서 폰으로</figcaption></figure><figure class=good><img src="after.jpg" alt="코발트 블루 바탕에 판테놀 밤 헤드라인과 크게 놓인 크림 단지 배너" loading="lazy"><figcaption>애프터 · 프롬프트 한 번</figcaption></figure></div>
+<div class="cmp"><figure><img src="before2.jpg" alt="욕실 세면대에서 폰으로 찍은 치약" loading="lazy"><figcaption>비포 · 세면대에서 폰으로</figcaption></figure><figure class=good><img src="after2.jpg" alt="진초록 바탕에 입냄새 99.3% 헤드라인과 크게 기울인 치약 배너" loading="lazy"><figcaption>애프터 · 생활용품도 똑같이</figcaption></figure></div>
+<h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>제품 사진 1장 <small>폰으로 찍은 그대로, 라벨만 잘 보이면 돼요</small></span></li><li><span class="n">2</span><span>ChatGPT <small>이미지 생성이 되는 요금제</small></span></li></ol>
+<section class="step"><span class="badge">STEP 1</span><h3>애플 배너 원칙 3개</h3><p class=sub>이것만 알면 프롬프트가 읽혀요.</p><ol class="prep rules"><li><span class="n">1</span><span><b>글은 딱 한 줄</b> 설명 말고 짧고 크게<small>판테놀 5% 함유 저자극 진정 보습 밤! → 판테놀 밤</small></span></li><li><span class="n">2</span><span><b>제품은 화면 밖까지 크게</b> 아래 가장자리에서 살짝 잘리게<small>작게 가운데 두면 쇼핑몰 썸네일처럼 보여요</small></span></li><li><span class="n">3</span><span><b>바탕은 한 가지 색, 장식은 0</b> 아이콘·딱지·별점·꽃·물방울 다 빼기<small>장식이 하나 늘 때마다 싸 보여요</small></span></li></ol><p class="lbl">고급스러워 보이는 글자 배치 (애플·프리미엄 폰 광고에서 뽑은 것)</p><ul class="chk"><li><span>글은 4단만: 작은 윗줄 → 아주 큰 헤드라인 → 작은 설명 한 줄 → 작은 버튼 하나</span></li><li><span>헤드라인은 2~3마디로 짧게, 화면 폭의 70%까지 크게. 나머지는 전부 작게</span></li><li><span>글은 위쪽 40% 안, 좌우 12% 여백 안쪽에만. 맨 위도 넉넉히 비우기</span></li><li><span>버튼은 색을 채우지 않고 테두리만 얇게</span></li><li><span>글자 색 하나, 배경도 한 색. 해시태그·배지·반짝이는 0개</span></li></ul><p class="lbl">원칙을 안 지키면 vs 지키면</p><div class="cmp"><figure><img src="plain.jpg" alt="딱지·별점·아이콘·버튼·보케 배경이 들어간 복잡한 화장품 배너" loading="lazy"><figcaption>나쁜 예 · 꽉 채운 배너</figcaption></figure><figure class=good><img src="after.jpg" alt="코발트 블루 바탕에 짧은 헤드라인과 큰 제품만 있는 배너" loading="lazy"><figcaption>좋은 예 · 한 줄 · 크게 · 한 가지 색</figcaption></figure></div><p class="tip">애플 공식 규칙이 아니라 애플 홈페이지 제품 페이지를 보고 제가 관찰한 특징이에요.</p><p class="done">한 줄 · 크게 · 한 가지 색. 이 셋만 기억해요.</p></section>
+<section class="step"><span class="badge">STEP 2</span><h3>사진 올리기</h3><p class=sub>보정 없이 그대로요.</p><ol class="do"><li><span class="n">1</span><span>ChatGPT 새 대화를 열어요.</span></li><li><span class="n">2</span><span>제품 사진 1장을 첨부해요.</span></li><li><span class="n">3</span><span>라벨이 잘 보이는 사진이면 충분해요.</span></li></ol><p class="done">사진 준비 끝.</p></section>
+<section class="step"><span class="badge">STEP 3</span><h3>프롬프트 붙여넣기</h3><p class=sub>[ ] 여섯 군데만 내 제품으로 바꿔요.</p><div class="copy"><pre class="ko">이 사진 속 제품으로, 애플 공식 홈페이지 제품 배너처럼 만들어줘.
+[레이아웃] 4:5 세로, 모두 가운데 정렬. 글은 위쪽 40% 안, 좌우 12% 여백 안쪽에만. 맨 위 여백은 화면 높이의 8%.
+[윗줄] 맨 위에 작고 가는 글씨 한 줄 &#x27;[자고 나면 차오르는 봄 보습]&#x27;.
+[헤드라인] 그 아래 아주 크고 굵은 한 줄 &#x27;[판테놀 밤]&#x27;. 2~3마디로 짧게. 글자 높이는 화면의 12% 안팎, 폭은 화면의 70% 안팎, 자간 좁게.
+[설명] 그 아래 작은 글씨 한 줄 &#x27;[예민한 피부를 위한 진정 보습 50ml]&#x27;. 헤드라인의 1/4 크기.
+[버튼] 그 아래 작은 알약 모양 테두리 버튼 하나 &#x27;자세히 보기&#x27;.
+[제품] [크림 단지]를 아래 60%에 화면 폭의 80% 이상으로 아주 크게. 아래쪽 일부는 화면 밖으로 잘리게, 글자와는 겹치지 않게. 스튜디오 조명, 질감 살리고, 라벨은 원본 그대로.
+[배경] [코발트 블루] 한 가지 색 평면. 글자 색은 [흰색] 하나.
+[금지] 해시태그·배지·별점·반짝이·격자무늬·소품·하단 정보 띠·웹주소·여러 색 전부 금지.</pre><button type="button">복사</button></div><table class="terms"><tr><th>바꿀 곳</th><th>이렇게</th></tr><tr><td class="w">[자고 나면 차오르는 봄 보습]</td><td>윗줄: 느낌이나 상황 한 줄</td></tr><tr><td class="w">[판테놀 밤]</td><td>헤드라인: 제품명이나 핵심 2~3마디 (예: 입냄새 99.3%)</td></tr><tr><td class="w">[예민한 피부를 위한 진정 보습 50ml]</td><td>설명: 무엇인지 + 용량 한 줄</td></tr><tr><td class="w">[크림 단지]</td><td>내 제품 이름 (튜브, 이어폰 케이스, 상자…)</td></tr><tr><td class="w">[코발트 블루] / [흰색]</td><td>배경색 하나 + 글자색 하나 (제품과 어울리게)</td></tr></table><p class="tip">[ ] 괄호는 지우고 내용만 남겨요. 나머지 문장은 그대로 두는 게 결과가 안정적이에요.</p><p class="done">한 가지 색 바탕에 내 제품만 크게 놓인 배너가 나와요.</p></section>
+<section class="step"><span class="badge">STEP 4</span><h3>안 되면 이렇게</h3><p class=sub>자주 꼬이는 두 가지예요.</p><p class="lbl">제품이 다른 물건으로 바뀌었을 때</p><div class="copy"><pre class="ko">방금 결과는 다른 제품으로 바뀌었어. 맨 처음 올린 사진의 제품 그대로, 라벨도 그대로 다시 만들어줘.</pre><button type="button">복사</button></div><p class="lbl">딱지·버튼이 자꾸 들어올 때</p><div class="copy"><pre class="ko">[금지] 줄에 방금 들어온 것들을 그대로 적어줘: 별점, 구매 버튼, 할인 딱지. 다시 만들어줘.</pre><button type="button">복사</button></div><p class="done">두세 번 안에 원하는 결과가 나와요.</p></section>
+<h2>꿀팁 5개</h2>
+<ul class="chk"><li><span>제품 사진은 폰으로 찍은 거 그대로 올려도 돼요. 대신 '라벨은 원본 그대로'는 꼭 넣어요.</span></li><li><span>결과가 다른 제품으로 바뀌면 '맨 처음 올린 사진 그대로'라고 다시 말해요.</span></li><li><span>헤드라인은 2~3마디로 짧게, 아주 크게. 긴 설명은 아래 작은 한 줄로.</span></li><li><span>배경색은 제품과 어울리는 한 색. 흰 제품은 파랑·연회색, 크림색 제품은 진초록처럼.</span></li><li><span>버튼·딱지·별점은 [금지] 목록에 꼭 적어요.</span></li></ul>
+<h2>이럴 때 꺼내 쓰세요</h2>
+<ul class="chk"><li><span>스마트스토어·상세페이지 첫 화면</span></li><li><span>인스타 피드 제품 소개 이미지</span></li><li><span>신제품 티저, 리뉴얼 안내</span></li></ul>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+
+</script>
+</body>
+</html>
