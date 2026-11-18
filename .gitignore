@@ -1,2 +1,4 @@
 PRODUCT.md
 .impeccable/
+node_modules/
+cardnews/posts/*/out*/.tmp/

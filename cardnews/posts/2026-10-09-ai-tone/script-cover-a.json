@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "slug": "2026-10-09-ai-tone",
+    "date": "2026-10-09",
+    "topic": "AI가 쓴 글에서 'AI 티' 지우는 프롬프트 3가지",
+    "format": "프롬프트 레시피형",
+    "ctaKeyword": "말투",
+    "coverOptions": "a / b / c — 확정되면 slides[0] 을 해당 안으로",
+    "outDir": "out-cover-a"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "chip": "AI술사",
+      "title": "AI 티 나는 글,\n<mark>이 3가지</mark>로 끝",
+      "media": "assets/cover-a.gif",
+      "_scene": "격자 배경, AI 문단 표시→취소선→사람 말투로 교체, AI 티 97%→3%"
+    }
+  ]
+}

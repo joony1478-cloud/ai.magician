@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body.dark{background:#0b0b0b;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:54px 54px}
+.k-win{left:80px;top:270px;width:920px;height:340px}
+.para{position:absolute;left:0;right:0;top:50px;padding:36px 44px;font-weight:500;font-size:40px;line-height:1.72;color:#222}
+.k-bar b{font-size:22px}
+.meter{position:absolute;right:56px;top:170px;z-index:3;border-radius:999px;padding:14px 32px;font-weight:900;font-size:42px;box-shadow:0 10px 30px rgba(0,0,0,.45);color:#fff;background:#e05a4a}
+.meter.ok{background:#f2e15b;color:#111}
+.new mark{background:#f2e15b;color:#111;padding:0 4px}
+.label{position:absolute;left:80px;top:170px;font-weight:800;font-size:30px;color:#999;letter-spacing:.02em}
+</style></head><body class="dark">
+<div class="label" id="lb">BEFORE</div>
+<div class="k-win" id="w"><div class="k-bar"><i></i><i></i><i></i><b id="ttl">AI가 써준 글</b></div>
+<div class="para old" id="old"><span class="k-bad b1">결론적으로</span>, 이 제품은 <span class="k-bad b2">다양한 측면에서</span> 업무 효율성을 높여준다고 <span class="k-bad b3">할 수 있습니다</span>.</div>
+<div class="para new" id="new">이 제품 쓰고 나서 <mark>보고서 쓰는 시간이 절반</mark>으로 줄었어요. 진짜예요.</div>
+</div>
+<div class="meter" id="m">AI 티 <span id="pct">97</span>%</div>
+<script>
+K.dur(6);
+K.show("#w",0.1,"up",.5); K.show("#m",0.35,"pop",.4); K.show("#lb",0.2,"fade",.3);
+K.sweep(".b1",0.9); K.sweep(".b2",1.25); K.sweep(".b3",1.6);
+K.cls(".k-bad","k-strike",2.2);
+K.hide("#old",2.9,.3);
+K.show("#new",3.2,"up",.4);
+K.at(t=>{document.getElementById("new").style.visibility=t<3.2?"hidden":"visible";
+  document.getElementById("lb").textContent=t<3.2?"BEFORE":"AFTER";
+  document.getElementById("lb").style.color=t<3.2?"#999":"#f2e15b";
+  document.getElementById("ttl").textContent=t<3.2?"AI가 써준 글":"AI술사 주문 적용";
+  document.getElementById("m").classList.toggle("ok",t>=3.4);});
+K.count("#pct",97,3,3.2,1.1);
+</script></body></html>

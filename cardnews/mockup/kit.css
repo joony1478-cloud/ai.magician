@@ -1,0 +1,49 @@
+/* AI술사 목업 키트 — 장면(scene) HTML 에 mock.mjs 가 자동으로 넣어준다 */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:Brand,"Apple SD Gothic Neo",sans-serif;background:#fafaf8;color:#111;word-break:keep-all;-webkit-font-smoothing:antialiased;letter-spacing:-.02em;position:relative}
+body.dark{background:#0b0b0b;color:#f4f4f1}
+
+/* 창 */
+.k-win{position:absolute;background:#fff;border:3px solid #111;border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.14);overflow:hidden}
+.k-bar{height:50px;display:flex;align-items:center;gap:10px;padding:0 18px;border-bottom:2px solid #e6e6e2;background:#f4f4f2;position:relative}
+.k-bar i{width:14px;height:14px;border-radius:50%;background:#ff5f57}
+.k-bar i:nth-child(2){background:#febc2e}.k-bar i:nth-child(3){background:#28c840}
+.k-bar b{position:absolute;left:0;right:0;text-align:center;font-weight:700;font-size:20px;color:#333;pointer-events:none}
+.k-win.k-term{background:#0c0c0c;color:#e8e8e8}
+.k-term .k-bar{background:#1b1b1b;border-color:#2a2a2a}.k-term .k-bar b{color:#bbb}
+.k-mono{font-family:ui-monospace,"SFMono-Regular",Menlo,monospace}
+
+/* 번호 배지 (레퍼런스의 ①) */
+.k-badge{position:absolute;width:58px;height:58px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font-weight:900;font-size:30px}
+body.dark .k-badge{background:#fff;color:#111}
+
+/* 채팅 */
+.k-chat{display:flex;flex-direction:column;gap:18px;padding:26px 30px}
+.k-me{align-self:flex-end;max-width:82%;background:#f0efeb;border-radius:22px 22px 6px 22px;padding:16px 22px;font-weight:500;font-size:25px;line-height:1.45}
+.k-ai{display:flex;gap:14px;max-width:92%;font-weight:500;font-size:25px;line-height:1.5}
+.k-ai::before{content:"";flex:none;width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#f2e15b,#e07a6f);margin-top:2px}
+.k-input{position:absolute;left:24px;right:24px;bottom:22px;min-height:66px;border:2px solid #ddd;border-radius:18px;padding:16px 80px 16px 22px;font-weight:500;font-size:24px;line-height:1.4;background:#fff;color:#111}
+.k-input::after{content:"↑";position:absolute;right:12px;bottom:10px;width:44px;height:44px;border-radius:12px;background:#111;color:#fff;display:grid;place-items:center;font-weight:900;font-size:24px}
+.k-ph{color:#aaa}
+.k-caret::after{content:"";display:inline-block;width:3px;height:1.05em;background:currentColor;margin-left:2px;vertical-align:-.15em}
+.k-caret.k-off::after{opacity:0}
+
+/* 메뉴 / 카드 / 파일 */
+.k-menu{position:absolute;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.16);padding:10px;min-width:240px;font-weight:700;font-size:24px}
+.k-menu div{padding:12px 16px;border-radius:10px}
+.k-menu .on{background:#f0efeb}
+.k-card{position:absolute;background:#fff;border:2.5px solid #111;border-radius:16px;padding:22px 26px;font-weight:500;font-size:24px;line-height:1.5}
+.k-card h4{font-weight:900;font-size:20px;letter-spacing:.06em;margin-bottom:8px}
+.k-file{position:absolute;display:flex;align-items:center;gap:12px;padding:12px 18px;background:#fff;border:2px solid #111;border-radius:12px;font-weight:700;font-size:22px;box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.k-file::before{content:"";width:26px;height:32px;border-radius:4px;background:#2b6cf0}
+
+/* 강조 */
+.k-hl{background:linear-gradient(#f2e15b,#f2e15b) no-repeat 0 85%/0% 45%;padding:0 2px}
+.k-bad{background:linear-gradient(rgba(224,122,111,.35),rgba(224,122,111,.35)) no-repeat 0 0/0% 100%;border-radius:4px}
+.k-strike{text-decoration:line-through;text-decoration-color:#e05a4a;text-decoration-thickness:5px}
+
+/* 커서 & 클릭 */
+.k-cursor{position:absolute;left:0;top:0;width:34px;height:34px;z-index:99;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.k-ripple{position:absolute;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;border:3px solid rgba(0,0,0,.35);z-index:98;pointer-events:none}
+body.dark .k-ripple{border-color:rgba(255,255,255,.5)}

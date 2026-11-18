@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{background:#f2e15b;color:#111}
+.series{position:absolute;left:0;right:0;top:46px;text-align:center;font-weight:500;font-size:30px;color:#3a3712;letter-spacing:-.03em}
+.paper{position:absolute;left:96px;top:200px;width:888px;height:470px;background:#fff;border:4px solid #111;border-radius:20px;box-shadow:14px 14px 0 #111;padding:56px 52px}
+.paper h5{font-weight:800;font-size:26px;color:#888;letter-spacing:.04em;margin-bottom:18px}
+.paper p{font-weight:500;font-size:40px;line-height:1.7;color:#222}
+.stamp{position:absolute;left:610px;top:360px;width:330px;height:330px;border-radius:50%;border:12px solid #d2382b;color:#d2382b;display:flex;flex-direction:column;align-items:center;justify-content:center;transform-origin:center;mix-blend-mode:multiply}
+.stamp::before{content:"";position:absolute;inset:10px;border:4px solid #d2382b;border-radius:50%}
+.stamp b{font-weight:900;font-size:58px;line-height:1.05;letter-spacing:-.04em;text-align:center}
+.stamp small{font-weight:800;font-size:26px;margin-top:8px;letter-spacing:.08em;margin-bottom:-6px}
+.txt{position:absolute;left:64px;right:48px;bottom:150px}
+.chip{display:inline-block;background:#111;color:#f2e15b;font-weight:900;font-size:50px;padding:8px 30px 6px;border-radius:999px;margin-bottom:26px;letter-spacing:-.02em}
+h1{font-weight:900;font-size:110px;line-height:1.06;letter-spacing:-.065em;color:#111}
+h1 span{background:#111;color:#f2e15b;padding:0 .12em}
+</style></head><body>
+<div class="series">오늘 바로 써먹는 AI, AI술사</div>
+<div class="paper" id="p"><h5>AI가 써준 글</h5><p><span class="k-bad b1">결론적으로</span>, 이 제품은 <span class="k-bad b2">다양한 측면에서</span> 효율성을 높여준다고 <span class="k-bad b3">할 수 있습니다</span>.</p></div>
+<div class="stamp" id="st"><b>사람 글<br>인증</b><small>AI술사</small></div>
+<div class="txt"><span class="chip" id="c">AI술사</span><h1 id="h">AI 티 나는 글,<br><span>이 3가지</span>로 끝</h1></div>
+<script>
+K.dur(5.5);
+K.show("#p",0.1,"up",.45);
+K.sweep(".b1",0.8); K.sweep(".b2",1.1); K.sweep(".b3",1.4);
+K.cls(".k-bad","k-strike",1.9);
+K.at(t=>{const el=document.getElementById("st");const p=Math.max(0,Math.min(1,(t-2.4)/.22));
+  const sc=2.2-1.2*p, bounce=t>2.62&&t<2.8?1+0.05*Math.sin((t-2.62)/.18*Math.PI):1;
+  el.style.opacity=t<2.4?0:Math.min(1,p*1.5)*.92; el.style.transform=`rotate(-14deg) scale(${sc*bounce})`;
+  const sh=t>2.62&&t<2.82?Math.sin((t-2.62)*90)*6:0; document.getElementById("p").style.marginLeft=sh+"px";});
+</script></body></html>

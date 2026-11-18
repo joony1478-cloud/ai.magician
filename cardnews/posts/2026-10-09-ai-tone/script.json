@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "slug": "2026-10-09-ai-tone",
+    "date": "2026-10-09",
+    "topic": "AI가 쓴 글에서 'AI 티' 지우는 프롬프트 3가지",
+    "format": "프롬프트 레시피형",
+    "ctaKeyword": "말투",
+    "coverOptions": "a / b / c — 확정되면 slides[0] 을 해당 안으로"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "chip": "AI술사",
+      "title": "AI 티 나는 글,\n<mark>이 3가지</mark>로 끝",
+      "media": "assets/cover-a.gif",
+      "_scene": "격자 배경, AI 문단 표시→취소선→사람 말투로 교체, AI 티 97%→3%"
+    },
+    {
+      "type": "body",
+      "title": "1. 금지어 주기",
+      "media": "assets/02.gif",
+      "body": "AI는 자주 쓰는 <b>말버릇</b>이 있어요.\n<mark>'결론적으로' '다양한'</mark>은 금지!\n이것만 해도 문장이 사람 같아져요.",
+      "_scene": "채팅창에 금지어 프롬프트 타이핑 → 전송 → 자연스러운 답변"
+    },
+    {
+      "type": "body",
+      "theme": "light",
+      "title": "2. 내 글 보여주기",
+      "media": "assets/03.gif",
+      "body": "<b>내가 예전에 쓴 글</b>을 하나 첨부하고\n<mark class=\"w\">이 말투 그대로</mark> 써달라고 하세요.\n문장 길이와 단어까지 따라 해요.",
+      "_scene": "내 글 파일을 채팅창으로 드래그 → '이 말투 그대로' 타이핑"
+    },
+    {
+      "type": "body",
+      "title": "3. 독자 한 명 정하기",
+      "media": "assets/04.gif",
+      "body": "'일반 독자' 말고 <b>딱 한 사람</b>을 정하세요.\n<mark>친구한테 카톡하듯</mark> 써달라고 하면\n딱딱한 설명문이 대화체로 바뀌어요.",
+      "_scene": "프롬프트 타이핑 → BEFORE 딱딱한 문장 / AFTER 카톡 말투"
+    },
+    {
+      "type": "cta",
+      "keyword": "말투",
+      "dm": "AI 티 안 나는 프롬프트 모음을 DM으로 드려요"
+    }
+  ]
+}

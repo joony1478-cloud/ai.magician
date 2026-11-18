@@ -1,0 +1,24 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+.k-badge{left:70px;top:36px}
+.k-win{left:150px;top:70px;width:780px;height:560px}
+.k-file{z-index:5}
+.drop{position:absolute;left:24px;right:24px;bottom:100px;height:200px;border:3px dashed #2b6cf0;border-radius:18px;background:rgba(43,108,240,.06);display:grid;place-items:center;font-weight:700;font-size:24px;color:#2b6cf0}
+.att{position:absolute;left:44px;bottom:108px;display:flex;align-items:center;gap:10px;padding:10px 16px;background:#f0efeb;border-radius:12px;font-weight:700;font-size:21px}
+.att::before{content:"";width:20px;height:26px;border-radius:3px;background:#2b6cf0}
+</style></head><body>
+<div class="k-badge">2</div>
+<div class="k-win" id="w"><div class="k-bar"><i></i><i></i><i></i><b>AI 채팅</b></div>
+  <div class="drop" id="drop">여기에 놓기</div>
+  <div class="att" id="att">내가_쓴_블로그글.txt</div>
+  <div class="k-input" id="in"></div>
+</div>
+<div class="k-file" id="f">내가_쓴_블로그글.txt</div>
+<script>
+K.dur(6);
+K.move("#f",[[0,1100,120],[0.4,1100,120],[1.6,330,420]]);
+K.cursor([[0,1100,160],[0.4,1290,150],[1.6,520,450],[2.3,520,450],[5.2,880,600]],[0.45]);
+K.show("#drop",0.6,"fade",.3); K.hide("#drop",1.7,.2);
+K.hide("#f",1.65,.15);
+K.show("#att",1.75,"pop",.3);
+K.type("#in","이 글 말투 그대로 써줘. 문장 길이도 비슷하게.",2.2,16,{placeholder:"메시지를 입력하세요"});
+</script></body></html>

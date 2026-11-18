@@ -1,0 +1,9 @@
+{
+  "name": "AI술사",
+  "handle": "ai.magician",
+  "_handle_note": "인스타 아이디(@ 뒤)를 실제 계정과 맞춰주세요. CTA 슬라이드와 캡션에 들어갑니다.",
+  "series": "오늘 바로 써먹는 AI, AI술사",
+  "profileLink": "https://joony1478-cloud.github.io/ai.magician/",
+  "ctaKeyword": "주문서",
+  "colors": { "bg": "#0b0b0b", "text": "#f1f0ec", "sub": "#b4b3ad", "accent": "#f2e15b", "accentInk": "#1f1f1f" }
+}
