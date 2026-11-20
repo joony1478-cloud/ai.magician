@@ -11,7 +11,7 @@ tools: Read, Write, Edit, Bash, Glob, Grep, WebFetch
 1. 사용자가 넣어둔 화면녹화가 있으면 그대로 사용 (mp4/mov/gif)
 2. 없으면 `_scene` 설명대로 목업 장면을 만든다: `assets/scenes/NN-이름.html`
    - 예시(`cardnews/posts/2026-10-09-ai-tone/assets/scenes/`)를 복사해 고치는 게 가장 빠르다
-   - 표지는 `meta.coverType` 원형(cover-a 변신 / cover-b 노란 도장 / cover-c 주문 입력)에서 시작
+   - 표지는 **기본 D 일러스트 뉴스형**(`cover-d.html` 복사 → 주제에 맞게 캐릭터·소품 다시 그리기, AI술사 마법사는 항상 등장). 라이터가 `meta.coverType` 으로 A/B/C 를 지정했을 때만 그 원형 사용
    - 크기: 표지 1080×1350 (하단 45%는 제목 자리라 비워두기), 본문 1080×660 (흰 배경)
    - 번호 배지(①②③)는 본문 순서와 맞추고, 4~7초 안에 "입력 → 결과"가 한 번 완결되게
    - **별·반짝이·파티클 배경 금지**

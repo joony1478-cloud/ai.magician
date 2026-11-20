@@ -1,0 +1,125 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* 표지 D · 일러스트 뉴스형 — 레트로 인쇄물 느낌 (크림 종이 + 주홍/남색 + 입자 질감)
+   상단 60%: 일러스트 / 하단: 템플릿이 검정 그라데이션 + 외곽선 칩 + 제목을 얹는다 */
+body{background:#f1e6d2}
+svg{position:absolute;inset:0}
+</style></head><body>
+<svg width="1080" height="1350" viewBox="0 0 1080 1350">
+<defs>
+  <filter id="grain" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4" result="n"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="table" tableValues="0 .22"/></feComponentTransfer>
+    <feComposite in2="SourceGraphic" operator="in"/>
+  </filter>
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".04" numOctaves="2" seed="2"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter>
+  <radialGradient id="glow"><stop offset="0" stop-color="#ff6a4d" stop-opacity=".9"/><stop offset="1" stop-color="#ff6a4d" stop-opacity="0"/></radialGradient>
+  <clipPath id="lens"><circle cx="0" cy="0" r="78"/></clipPath>
+</defs>
+
+<!-- 사이렌 빛줄기 -->
+<g id="rays" transform="translate(540 190)" opacity=".55">
+  <g id="raysRot"></g>
+</g>
+
+<!-- 구름(연기) -->
+<g fill="#e8603c" opacity=".88" filter="url(#rough)">
+  <circle cx="70" cy="640" r="90"/><circle cx="190" cy="600" r="80"/><circle cx="300" cy="650" r="70"/><circle cx="20" cy="560" r="70"/>
+  <circle cx="1010" cy="620" r="95"/><circle cx="890" cy="590" r="75"/><circle cx="790" cy="650" r="65"/><circle cx="1070" cy="540" r="70"/>
+</g>
+<g fill="#f3b08f" opacity=".9" filter="url(#rough)">
+  <circle cx="130" cy="690" r="70"/><circle cx="250" cy="700" r="60"/><circle cx="950" cy="690" r="70"/><circle cx="830" cy="705" r="55"/>
+</g>
+
+<!-- 땅 + 갈라짐 -->
+<path d="M0 760 Q540 730 1080 760 V1350 H0Z" fill="#e7d6bb"/>
+<path id="crack" d="M540 745 L520 790 L560 820 L515 870 L555 905 L525 960" fill="none" stroke="#1f2f5c" stroke-width="7" stroke-linejoin="round"/>
+<path d="M520 790 L470 805 M560 820 L610 830 M515 870 L475 895" fill="none" stroke="#1f2f5c" stroke-width="4"/>
+
+<!-- 사이렌 -->
+<g transform="translate(540 190)">
+  <circle id="sirenGlow" r="120" fill="url(#glow)"/>
+  <rect x="-62" y="28" width="124" height="34" rx="6" fill="#1f2f5c"/>
+  <path d="M-48 30 A48 52 0 0 1 48 30 Z" fill="#e23b2e" stroke="#1f2f5c" stroke-width="6"/>
+  <path d="M-24 6 A26 24 0 0 1 4 -14" fill="none" stroke="#ffd2c4" stroke-width="8" stroke-linecap="round"/>
+</g>
+
+<!-- 날아다니는 종이 -->
+<g id="fly1"><rect x="-34" y="-44" width="68" height="88" rx="4" fill="#fffaf0" stroke="#1f2f5c" stroke-width="4"/><path d="M-20 -24h40M-20 -8h40M-20 8h28" stroke="#9aa3bd" stroke-width="5"/></g>
+<g id="fly2"><rect x="-28" y="-36" width="56" height="72" rx="4" fill="#fffaf0" stroke="#1f2f5c" stroke-width="4"/><path d="M-16 -18h32M-16 -4h32M-16 10h20" stroke="#9aa3bd" stroke-width="5"/></g>
+
+<!-- 왼쪽: AI 로봇 (식은땀) -->
+<g id="robot">
+  <line x1="250" y1="330" x2="250" y2="380" stroke="#1f2f5c" stroke-width="7"/>
+  <circle id="ant" cx="250" cy="322" r="14" fill="#e23b2e" stroke="#1f2f5c" stroke-width="5"/>
+  <rect x="120" y="380" width="260" height="230" rx="26" fill="#2f4b9a" stroke="#1f2f5c" stroke-width="7"/>
+  <rect x="148" y="408" width="204" height="120" rx="16" fill="#dfe6f7" stroke="#1f2f5c" stroke-width="5"/>
+  <!-- 눈썹(당황) / 눈 / 입 -->
+  <path d="M172 452 L212 436 M328 452 L288 436" stroke="#1f2f5c" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="205" cy="476" rx="15" ry="18" fill="#fff" stroke="#1f2f5c" stroke-width="5"/><circle id="eyeL" cx="207" cy="480" r="7" fill="#1f2f5c"/>
+  <ellipse cx="295" cy="476" rx="15" ry="18" fill="#fff" stroke="#1f2f5c" stroke-width="5"/><circle id="eyeR" cx="297" cy="480" r="7" fill="#1f2f5c"/>
+  <path d="M220 510 q10 -8 20 0 q10 8 20 0 q10 -8 20 0" fill="none" stroke="#1f2f5c" stroke-width="5" stroke-linecap="round"/>
+  <text x="250" y="582" text-anchor="middle" font-family="Brand" font-weight="900" font-size="44" fill="#f1e6d2">AI</text>
+  <path id="sweat" d="M360 398 q22 34 0 52 q-22 -18 0 -52z" fill="#7fc2ee" stroke="#1f2f5c" stroke-width="4"/>
+  <!-- 다리 -->
+  <path d="M175 610 v70 h-30 M325 610 v70 h30" fill="none" stroke="#1f2f5c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 팔 + 종이 -->
+  <path d="M380 520 L430 500" stroke="#1f2f5c" stroke-width="9" stroke-linecap="round"/>
+  <g transform="translate(420 440) rotate(-6)">
+    <rect x="0" y="0" width="200" height="250" rx="6" fill="#fffaf0" stroke="#1f2f5c" stroke-width="6"/>
+    <text x="22" y="52" font-family="Brand" font-weight="700" font-size="26" fill="#1f2f5c">결론적으로,</text>
+    <path d="M18 44 h150" stroke="#e23b2e" stroke-width="6" id="s1"/>
+    <path d="M22 88h150M22 120h120M22 152h150M22 184h90" stroke="#9aa3bd" stroke-width="8" stroke-linecap="round"/>
+    <g id="stamp" transform="translate(62 205)">
+      <circle r="44" fill="none" stroke="#e23b2e" stroke-width="7"/>
+      <text y="12" text-anchor="middle" font-family="Brand" font-weight="900" font-size="30" fill="#e23b2e">AI티</text>
+    </g>
+  </g>
+</g>
+
+<!-- 오른쪽: AI술사 (마법사 모자 + 돋보기) -->
+<g id="wizard">
+  <path d="M760 420 L840 250 L920 420 Z" fill="#1f2f5c" stroke="#1f2f5c" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M740 420 h200" stroke="#1f2f5c" stroke-width="14" stroke-linecap="round"/>
+  <path id="star" d="M840 300 l9 18 20 3 -14 14 3 20 -18 -9 -18 9 3 -20 -14 -14 20 -3z" fill="#f2e15b"/>
+  <rect x="730" y="426" width="220" height="200" rx="24" fill="#e8603c" stroke="#1f2f5c" stroke-width="7"/>
+  <path d="M772 476 L806 470 M908 476 L874 470" stroke="#1f2f5c" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="795" cy="505" r="11" fill="#1f2f5c"/><circle cx="885" cy="505" r="11" fill="#1f2f5c"/>
+  <path d="M810 560 q30 24 60 0" fill="none" stroke="#1f2f5c" stroke-width="7" stroke-linecap="round"/>
+  <text x="840" y="610" text-anchor="middle" font-family="Brand" font-weight="900" font-size="30" fill="#1f2f5c">술사</text>
+  <path d="M770 626 v60 h-30 M910 626 v60 h30" fill="none" stroke="#1f2f5c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 팔 + 돋보기 -->
+  <g id="mag">
+    <path d="M730 540 L690 560" stroke="#1f2f5c" stroke-width="9" stroke-linecap="round"/>
+    <path d="M690 560 L640 560" stroke="#1f2f5c" stroke-width="14" stroke-linecap="round"/>
+    <g transform="translate(575 560)">
+      <circle r="78" fill="#cfe7f7" fill-opacity=".55" stroke="#1f2f5c" stroke-width="10"/>
+      <text y="16" text-anchor="middle" font-family="Brand" font-weight="900" font-size="46" fill="#e23b2e">AI티!</text>
+      <path d="M-40 -40 a56 56 0 0 1 30 -18" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+</g>
+
+<!-- 질감 -->
+<rect width="1080" height="1350" fill="#000" filter="url(#grain)"/>
+</svg>
+<script>
+K.dur(4);
+const NS="http://www.w3.org/2000/svg", rot=document.getElementById("raysRot");
+for(let i=0;i<18;i++){const p=document.createElementNS(NS,"path");const a=i*20*Math.PI/180,b=(i*20+9)*Math.PI/180,R=1200;
+  p.setAttribute("d",`M0 0 L${Math.cos(a)*R} ${Math.sin(a)*R} L${Math.cos(b)*R} ${Math.sin(b)*R}Z`);p.setAttribute("fill",i%2?"#f3b08f":"#e8603c");rot.appendChild(p);}
+const T=4, w=t=>2*Math.PI*t/T, $=id=>document.getElementById(id);
+K.at(t=>{
+  rot.setAttribute("transform",`rotate(${40*t/T})`);   // 4초에 40도 = 빛줄기 무늬 한 주기 → 끊김 없이 반복
+  $("sirenGlow").setAttribute("opacity",.45+.55*Math.abs(Math.sin(w(t)*2)));
+  $("rays").setAttribute("opacity",.45+.15*Math.sin(w(t)*2));
+  const j=Math.sin(t*60)*2.2; $("robot").setAttribute("transform",`translate(${j} 0)`);   // 덜덜
+  const sp=(t%2)/2; $("sweat").setAttribute("transform",`translate(${sp*10} ${sp*60})`); $("sweat").setAttribute("opacity",1-sp);
+  $("ant").setAttribute("fill",Math.sin(w(t)*4)>0?"#e23b2e":"#f2e15b");
+  const mx=Math.sin(w(t))*22, my=Math.cos(w(t))*14; $("mag").setAttribute("transform",`translate(${mx} ${my})`);
+  $("star").setAttribute("transform",`rotate(${Math.sin(w(t))*12} 840 330)`);
+  const sc=1+.12*Math.max(0,Math.sin(w(t)*2)); $("stamp").setAttribute("transform",`translate(62 205) scale(${sc}) rotate(-12)`);
+  const f1=(t%T)/T; $("fly1").setAttribute("transform",`translate(${380+f1*-260} ${330-f1*230}) rotate(${-20+f1*140})`); $("fly1").setAttribute("opacity",Math.sin(f1*Math.PI));
+  const f2=((t+2)%T)/T; $("fly2").setAttribute("transform",`translate(${640+f2*300} ${300-f2*200}) rotate(${15-f2*160})`); $("fly2").setAttribute("opacity",Math.sin(f2*Math.PI));
+});
+</script></body></html>

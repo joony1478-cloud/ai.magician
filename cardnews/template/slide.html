@@ -59,6 +59,12 @@ mark.w{background:#fff;color:var(--ink)}
 .cover .chip.y{background:var(--accent)}
 .cover h1{font-weight:900;font-size:110px;line-height:1.06;letter-spacing:-.065em;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,.45)}
 .cover h1 mark{background:none;color:var(--accent);padding:0;margin:0;font-weight:900}
+.cover .chip.o{background:none;color:#fff;border:3px solid #fff;font-weight:700;font-size:40px;padding:6px 30px 4px;margin-bottom:30px}
+
+/* cover + "coverStyle":"news" — 일러스트 뉴스형 (전체 일러스트 → 하단 검정 페이드 → 외곽선 칩 + 흰 제목 2줄) */
+.cover.news .shade{background:linear-gradient(rgba(0,0,0,0) 46%,rgba(0,0,0,.72) 62%,rgba(0,0,0,.94) 76%,#000)}
+.cover.news .txt{bottom:140px}
+.cover.news h1{font-weight:800;font-size:90px;line-height:1.24;letter-spacing:-.045em;text-shadow:none}
 
 /* ---------- cta ---------- */
 .cta h2{position:absolute;left:60px;right:60px;top:150px;text-align:center;font-weight:900;font-size:80px;line-height:1.14;letter-spacing:-.055em;color:#fff}
@@ -87,13 +93,13 @@ const rich = t => String(t||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">
 const lines = t => String(t||"").split("\n").filter(Boolean).map(l=>`<p>${rich(l)}</p>`).join("");
 const hasMedia = !!s.media;
 // textless: GIF 안에 제목까지 다 그려져 있는 표지 (템플릿은 시리즈명도 안 얹음)
-document.body.className = s.type + (s.theme === "light" ? " light" : "") + (s.shade === false ? " noshade" : "");
+document.body.className = s.type + (s.theme === "light" ? " light" : "") + (s.shade === false ? " noshade" : "") + (s.coverStyle ? " " + s.coverStyle : "");
 const series = s.series === false ? "" : `<div class="series">${rich(s.series || D.series)}</div>`;
 
 let html = "";
 if (s.type === "cover") {
   html = s.textless ? "" : `<div class="shade"></div>${series}
-  <div class="txt">${s.chip?`<span class="chip${s.chipStyle==="accent"?" y":""}">${rich(s.chip)}</span>`:""}<h1>${rich(s.title)}</h1></div>`;
+  <div class="txt">${s.chip?`<span class="chip${s.chipStyle==="accent"?" y":s.chipStyle==="outline"?" o":""}">${rich(s.chip)}</span>`:""}<h1>${rich(s.title)}</h1></div>`;
 } else if (s.type === "body") {
   const plain = String(s.title||"").replace(/<[^>]+>/g,"");
   html = `${series}<h2 class="${plain.length>12?"long":""}">${rich(s.title)}</h2><div class="lines">${lines(s.body)}</div>`;

@@ -9,7 +9,7 @@ tools: Read, Write, Edit, Glob
 ## 할 일
 1. 표지 훅을 **3안** 만든다 (서로 다른 훅 공식). 각 안 옆에 왜 클릭할지 한 줄
 2. 가장 강한 1안으로 `script.json` 을 쓴다. 나머지 2안은 `meta.altCovers` 에 넣는다
-3. 표지 디자인 원형(guide.md 5장 A 변신 / B 노란 도장 / C 주문 입력) 중 주제에 맞는 것을 `meta.coverType` 에 추천
+3. 표지는 기본 D(일러스트 뉴스형): `coverStyle:"news"`, 외곽선 칩(`AI 뉴스`/`AI 꿀팁` 등), 흰 제목 2줄. `_scene` 에 일러스트 속 캐릭터·소품·움직임을 구체적으로 적는다
 4. 흐름: 표지(훅) → 2장(왜 지금/결과 미리보기) → 본문(단계·목록) → CTA
 
 ## script.json 형식

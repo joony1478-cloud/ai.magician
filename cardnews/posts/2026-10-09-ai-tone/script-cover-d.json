@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "slug": "2026-10-09-ai-tone",
+    "date": "2026-10-09",
+    "topic": "AI가 쓴 글에서 'AI 티' 지우는 프롬프트 3가지",
+    "format": "프롬프트 레시피형",
+    "ctaKeyword": "말투",
+    "coverOptions": "a / b / c — 확정되면 slides[0] 을 해당 안으로",
+    "outDir": "out-cover-d"
+  },
+  "slides": [
+    {
+      "type": "cover",
+      "coverStyle": "news",
+      "series": false,
+      "chip": "AI 꿀팁",
+      "chipStyle": "outline",
+      "title": "AI가 쓴 글, 다 티 난다\n이 3가지만 바꾸세요",
+      "media": "assets/cover-d.gif",
+      "_scene": "레트로 인쇄 일러스트: 사이렌 빛줄기, 식은땀 흘리는 AI 로봇이 든 'AI티' 도장 찍힌 원고, 돋보기 든 AI술사 마법사, 땅 갈라짐"
+    }
+  ]
+}

@@ -5,15 +5,18 @@
     "topic": "AI가 쓴 글에서 'AI 티' 지우는 프롬프트 3가지",
     "format": "프롬프트 레시피형",
     "ctaKeyword": "말투",
-    "coverOptions": "a / b / c — 확정되면 slides[0] 을 해당 안으로"
+    "coverOptions": "a / b / c / d — 확정: d (일러스트 뉴스형)"
   },
   "slides": [
     {
       "type": "cover",
-      "chip": "AI술사",
-      "title": "AI 티 나는 글,\n<mark>이 3가지</mark>로 끝",
-      "media": "assets/cover-a.gif",
-      "_scene": "격자 배경, AI 문단 표시→취소선→사람 말투로 교체, AI 티 97%→3%"
+      "coverStyle": "news",
+      "series": false,
+      "chip": "AI 꿀팁",
+      "chipStyle": "outline",
+      "title": "AI가 쓴 글, 다 티 난다\n이 3가지만 바꾸세요",
+      "media": "assets/cover-d.gif",
+      "_scene": "레트로 인쇄 일러스트: 사이렌 빛줄기, 식은땀 흘리는 AI 로봇이 든 'AI티' 도장 찍힌 원고, 돋보기 든 AI술사 마법사, 땅 갈라짐"
     },
     {
       "type": "body",
