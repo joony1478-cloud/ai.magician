@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI로 고퀄리티 상세페이지 디자인</title>
+<meta name="description" content="레퍼런스 링크와 제품 설명만 넣으면 편집 가능한 상세페이지가 나오는 클로드 코드 스킬">
+<meta property="og:title" content="AI로 고퀄리티 상세페이지 디자인">
+<meta property="og:description" content="레퍼런스 링크와 제품 설명만 넣으면 편집 가능한 상세페이지가 나오는 클로드 코드 스킬">
+<meta property="og:url" content="https://joony1478-cloud.github.io/ai.magician/scrolls/detail-page-skill/">
+<meta property="og:image" content="https://joony1478-cloud.github.io/ai.magician/scrolls/detail-page-skill/cover.png">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../../favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<style>@font-face{font-family:Paperlogy;font-weight:400;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-4Regular.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:600;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-6SemiBold.woff2) format("woff2")}
+@font-face{font-family:Paperlogy;font-weight:800;font-display:swap;src:url(https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/Paperlogy-8ExtraBold.woff2) format("woff2")}
+:root{--paper:#fff;--card:#fff;--ink:#1f1f1f;--sub:#5f5e5a;--dim:#8e8d88;--line:#dcd9cf;--box:#efede6;--stamp:#f2e15b;--grid:rgba(31,31,31,.045)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{background:var(--paper);-webkit-text-size-adjust:100%}
+body{font-family:Paperlogy,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:var(--ink);line-height:1.6;word-break:keep-all;overflow-wrap:anywhere;
+  background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/22px 22px,var(--paper)}
+::selection{background:var(--stamp)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+a{color:var(--ink);text-underline-offset:3px}
+main{max-width:520px;margin:0 auto;padding:16px 16px calc(56px + env(safe-area-inset-bottom))}
+.cover{display:block;width:100%;height:auto;aspect-ratio:16/10;border:1px solid var(--ink)}
+.art{display:block;width:100%;height:auto;margin:18px 0 6px;border:1px solid var(--ink)}
+.hi{margin-top:28px;font-size:16px;color:var(--sub)}
+h1{margin-top:6px;font-weight:800;font-size:clamp(28px,8vw,36px);line-height:1.3;letter-spacing:-.03em}
+h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--stamp) 58%)}
+.lead{margin-top:16px;font-size:17px;color:var(--sub)}
+.lead b{color:var(--ink);font-weight:600}
+h2{margin:44px 0 12px;font-weight:800;font-size:22px;letter-spacing:-.02em}
+h2+p{font-size:16px;color:var(--sub);margin-bottom:12px}
+ol.prep{list-style:none;display:grid;gap:8px}
+ol.prep li{display:flex;gap:12px;align-items:baseline;padding:14px 16px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ol.prep li small{display:block;color:var(--sub);font-size:14px}
+.n{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;font-weight:800;font-size:13px;background:var(--ink);color:#fff;transform:translateY(-1px)}
+.step{margin-top:20px;padding:22px 18px 18px;background:var(--card);border:1px solid var(--ink)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13px;letter-spacing:.04em;padding:4px 10px;background:var(--stamp)}
+.badge i{width:10px;height:10px;display:inline-block;border:1.5px solid var(--ink)}
+.step h3{margin-top:12px;font-weight:800;font-size:22px;line-height:1.35;letter-spacing:-.02em}
+.step h3 small{display:block;font-size:14px;font-weight:600;color:var(--dim);letter-spacing:0}
+.step .sub{margin-top:4px;font-size:16px;color:var(--sub)}
+.step>p{margin-top:8px;font-size:16px}
+.shot{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--line)}
+ol.do{list-style:none;margin-top:16px;display:grid;gap:10px}
+ol.do li{display:flex;gap:10px;align-items:baseline;font-size:16px}
+.lbl{margin-top:16px;font-weight:800;font-size:14px;color:var(--dim)}
+.copy{position:relative;margin-top:10px;background:var(--box);border:1px solid var(--line)}
+.copy pre{margin:0;padding:14px 14px 50px;font-family:ui-monospace,Consolas,"D2Coding",monospace;font-size:13.5px;line-height:1.65;white-space:pre-wrap;word-break:break-all}
+.copy pre.ko{font-family:inherit;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+.copy button{position:absolute;right:8px;bottom:8px;appearance:none;border:1px solid var(--ink);background:#fff;font:800 13px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 14px;cursor:pointer}
+.copy button.ok{background:var(--stamp)}
+.copy.line{display:flex;align-items:center}
+.copy.line pre{flex:1;min-width:0;padding:12px 10px 12px 14px;word-break:normal;overflow-wrap:anywhere}
+.copy.line button{position:static;flex:none;margin:6px}
+.k{font-family:Paperlogy,sans-serif;font-weight:600}
+.done{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:16px;font-weight:600}
+.done::before{content:"✓ ";font-weight:800}
+.tip{margin-top:12px;font-size:14px;color:var(--dim)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:var(--box);padding:1px 5px}
+ul.chk{list-style:none;display:grid;gap:8px}
+ul.chk li{display:flex;align-items:baseline;gap:10px;padding:12px 14px;background:var(--card);border:1px solid var(--line);font-size:16px}
+ul.chk li::before{content:"✓";flex:none;display:inline-grid;place-items:center;width:22px;height:22px;font-weight:800;font-size:13px;background:var(--stamp)}
+ul.warn{list-style:none;display:grid;gap:8px}
+ul.warn li{padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ink);font-size:16px}
+table.num{width:100%;margin-top:12px;border-collapse:collapse;font-size:15px}
+table.num td{padding:9px 0;border-bottom:1px dashed var(--line)}
+table.num td:last-child{text-align:right;font-weight:800;white-space:nowrap}
+.src{margin-top:28px;font-size:14px;color:var(--dim)}
+.bye{margin-top:32px;font-size:17px}
+.sign{margin-top:20px;font-weight:800;font-size:16px}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:28px;min-height:56px;padding:0 20px;background:var(--stamp);border:2px solid var(--ink);
+  box-shadow:5px 5px 0 var(--ink);color:var(--ink);font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
+/* 비밀코드 100 */
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:sticky;top:0;z-index:2;padding:10px 0;background:var(--paper)}
+.pills button{appearance:none;border:1px solid var(--ink);background:#fff;font:600 14px Paperlogy,sans-serif;color:var(--ink);min-height:36px;padding:0 12px;cursor:pointer}
+.pills button[aria-pressed=true]{background:var(--ink);color:#fff}
+.cat h3{margin-top:30px;font-weight:800;font-size:20px}
+.cat>p{font-size:15px;color:var(--sub)}
+.code{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 14px 12px;background:var(--card);border:1px solid var(--line);font:inherit;color:inherit;cursor:pointer}
+.code:hover{border-color:var(--ink)}
+.code .top{display:flex;align-items:baseline;gap:8px}
+.code b{font-family:ui-monospace,Consolas,monospace;font-size:15px}
+.code .w{font-size:13px;color:var(--dim);flex:1}
+.code .c{font-weight:800;font-size:13px;border:1px solid var(--ink);padding:2px 8px}
+.code.ok .c{background:var(--stamp)}
+.code p{margin-top:6px;font-size:15px;color:var(--sub)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;margin-top:14px}
+.pair figure{min-width:0}.pair img{display:block;width:100%;height:auto;border:1px solid var(--ink)}
+.pair figcaption{margin-top:6px;font-size:13px;color:var(--dim);text-align:center}
+.dl{display:flex;align-items:center;justify-content:center;margin-top:16px;min-height:52px;padding:0 18px;background:var(--ink);color:#fff;font-weight:800;font-size:16px;text-decoration:none}
+.dl:active{opacity:.8}
+.path{font-size:14px;line-height:2;color:var(--sub);overflow-wrap:anywhere}
+ol.do li b{font-weight:800}
+</style>
+</head>
+<body>
+<main>
+<img class="cover" src="cover.png" alt="픽셀 마법사와 AI로 고퀄리티 상세페이지 디자인 제목">
+
+<p class="hi">안녕하세요 ai 술사 성준입니다.</p>
+<h1>AI로 고퀄리티<br><em>상세페이지 디자인</em></h1>
+<p class="lead">AI한테 "상세페이지 만들어줘" 한 번에 시켜 보셨죠?<br>글자는 깨지고 빽빽해서, 딱 봐도 AI 티가 나요.</p>
+<p class="lead">뼈대·디자인·편집을 <b>나눠서 시키면</b> 달라져요.<br>그 과정을 스킬 하나로 묶었어요.</p>
+<img class="art" src="art.jpg" alt="주황색 큐브 마법사가 책상에서 두루마리에 그림 카드를 붙이는 장면">
+<h2>이 스킬로 만든 상세페이지</h2>
+<p>둘 다 가상 브랜드 예시예요. 처음부터 끝까지 전체를 그대로 붙였어요.</p>
+<div class="pair"><figure><img src="ex_cream.jpg" alt="스킬로 만든 화장품 상세페이지 전체" loading="lazy"><figcaption>화장품 (가상 브랜드 예시)</figcaption></figure><figure><img src="ex_steak.jpg" alt="스킬로 만든 스테이크 상세페이지 전체" loading="lazy"><figcaption>스테이크 (가상 브랜드 예시)</figcaption></figure></div>
+<h2>준비물</h2><ol class="prep"><li><span class="n">1</span><span>클로드 코드<small>일반 채팅 앱만으로는 안 돼요.</small></span></li><li><span class="n">2</span><span>Codex CLI<small>유료 ChatGPT 계정으로 로그인해요. 이미지는 GPT가 그려요.</small></span></li><li><span class="n">3</span><span>파이썬 · 크롬<small>레퍼런스 캡처와 편집기 만들기에 써요.</small></span></li></ol>
+<p class="tip">파이썬 패키지(Pillow, Playwright)나 클로드 크롬 확장이 없다고 나오면, 클로드 코드에게 설치를 도와 달라고 하세요.</p>
+<section class="step"><span class="badge">STEP 1</span><h3>스킬 폴더에 넣기</h3><p class=sub>내려받아 압축을 풀고 폴더째 옮겨요.</p><a class="dl" href="detail-page-skill.zip" download>스킬 내려받기 (zip)</a><ol class="do"><li><span class="n">1</span><span>zip 압축을 풀면 <code>detail-page</code> 폴더가 나와요</span></li><li><span class="n">2</span><span>이 폴더를 <code>.claude/skills/</code> 안에 넣어요</span></li></ol><p class="lbl">넣고 난 뒤 위치</p><p class="path"><code>~/.claude/skills/detail-page/</code><br>윈도우는 내 사용자 폴더 안 <code>.claude\skills\detail-page\</code></p><p class="done">폴더를 열었을 때 SKILL.md가 바로 보이면 맞아요.</p></section>
+<section class="step"><span class="badge">STEP 2</span><h3>레퍼런스 링크와 제품 설명 주기</h3><p class=sub>클로드 코드에 아래처럼 입력해요.</p><div class="copy line"><pre class="ko">/detail-page 레퍼런스링크 제품설명</pre><button type="button">복사</button></div><ol class="do"><li><span class="n">1</span><span>레퍼런스 링크: 닮고 싶은 상세페이지 주소</span></li><li><span class="n">2</span><span>제품 설명: 이름·한 줄 소개·가격</span></li><li><span class="n">3</span><span>제품 사진이 있으면 같이 줘요</span></li></ol><p class="done">여기서부터는 클로드가 알아서 진행해요.</p></section>
+<section class="step"><span class="badge">STEP 3</span><h3>편집기에서 손보기</h3><p class=sub>나온 편집기 파일을 크롬에서 열어요.</p><img class="shot" src="editor.jpg" alt="상세페이지 편집기 화면. 왼쪽 요소 목록, 가운데 페이지, 오른쪽 속성 패널" loading="lazy"><ol class="do"><li><span class="n">1</span><span>글자는 두 번 눌러 고쳐요</span></li><li><span class="n">2</span><span>끌어서 옮기고 모서리로 크기를 바꿔요</span></li><li><span class="n">3</span><span>이미지는 내 사진으로 바꿔요</span></li></ol><p class="done">잘못 건드려도 Ctrl+Z로 되돌려요.</p></section>
+<section class="step"><span class="badge">STEP 4</span><h3>PNG로 저장하기</h3><p class=sub>편집기 위쪽 버튼으로 저장해요.</p><img class="shot" src="editor_bar.jpg" alt="편집기 위쪽의 섹션 PNG, 전체 PNG, JSON 저장 버튼" loading="lazy"><ol class="do"><li><span class="n">1</span><span><b>전체 PNG</b>: 한 장으로 저장</span></li><li><span class="n">2</span><span><b>섹션 PNG</b>: 고른 섹션만 저장</span></li><li><span class="n">3</span><span><b>JSON 저장</b>: 나중에 다시 열어 고칠 때</span></li></ol><p class="done">이 PNG가 상세페이지 이미지예요.</p></section>
+<h2>안에서는 세 번 나눠서 일해요</h2>
+<p>AI마다 잘하는 일이 달라서 순서대로 맡겨요.</p>
+<ol class="do"><li><span class="n">1</span><span><b>클로드</b>가 레퍼런스를 보고 뼈대를 짜요</span></li><li><span class="n">2</span><span><b>GPT</b>가 그 자리에 들어갈 이미지를 그려요</span></li><li><span class="n">3</span><span><b>클로드</b>가 글자를 얹어 편집 가능한 파일로 묶어요</span></li></ol>
+<div class="pair"><figure><img src="wire.jpg" alt="클로드가 짠 뼈대. 이미지 자리가 회색 상자로 비어 있다" loading="lazy"><figcaption>클로드가 짠 뼈대</figcaption></figure><figure><img src="wire_done.jpg" alt="같은 자리에 이미지와 색이 들어간 완성본" loading="lazy"><figcaption>이미지를 입힌 완성본</figcaption></figure></div>
+<p class="tip">글자는 끝까지 진짜 글자로 남아요. 그래서 한글이 안 깨지고 나중에 고칠 수 있어요.</p>
+<h2>시작 전에 알아둘 것</h2>
+<ul class="warn"><li>일반 채팅 앱만으로는 안 돼요. 클로드 코드에서 돌아가요.</li><li>이미지 1장에 1~6분, 전체는 수십 분 걸려요.</li><li>빠진 정보는 클로드가 임의로 채우고 plan.md에 적어 둬요.</li><li>화장품·식품은 효능 문구를 올리기 전에 꼭 직접 확인하세요.</li></ul>
+<h2>이럴 때 꺼내 쓰세요</h2>
+<ul class="chk"><li><span>새 제품 상세페이지 초안이 필요할 때</span></li><li><span>디자이너에게 보여줄 시안이 필요할 때</span></li><li><span>좋아하는 상세페이지 느낌을 내 제품에 입혀 볼 때</span></li></ul>
+<p class="src">참고한 영상: <a href="https://www.youtube.com/watch?v=YjLyyOiUIMI" target="_blank" rel="noopener">youtube.com/watch?v=YjLyyOiUIMI</a><br>나눠서 시키는 방법은 이 영상에서 배웠어요.</p>
+
+<p class="bye">궁금하신 점은 DM으로 편하게 물어봐 주세요 🪄</p>
+<p class="sign">From. ai 술사 | 성준</p>
+<a class="cta" href="../../">ai술사의 모든 꿀팁 확인하기!</a>
+</main>
+<script>
+document.querySelectorAll('.copy button').forEach(function(b){
+  b.addEventListener('click',function(){cp(b.parentNode.querySelector('pre').textContent,function(r){
+    b.textContent=r?'복사됨 ✓':'길게 눌러 복사';b.classList.toggle('ok',r);setTimeout(function(){b.textContent='복사';b.classList.remove('ok')},1600)})});
+});
+function cp(t,cb){function fb(){var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');a.style.cssText='position:fixed;top:0;opacity:0';document.body.appendChild(a);a.select();
+  var r=false;try{r=document.execCommand('copy')}catch(e){}document.body.removeChild(a);cb(r)}
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(function(){cb(true)},fb)}else fb();}
+
+</script>
+</body>
+</html>
