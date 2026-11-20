@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+.k-badge{left:70px;top:36px}
+.k-win{left:150px;top:62px;width:780px;height:540px}
+.body{padding:26px 30px;font-size:23px;line-height:1.55}
+.l{white-space:pre;min-height:1.55em}
+.p{color:#f2e15b}.ok{color:#5fd38d}.dim{color:#8a8a8a}
+.ba{margin-top:14px;border-top:1px dashed #333;padding-top:14px;font-family:Brand;font-size:25px;line-height:1.6}
+.bad{color:#9a9a9a;text-decoration:line-through;text-decoration-color:#e05a4a;text-decoration-thickness:3px}
+.good{color:#fff;font-weight:700}
+.good mark{background:#f2e15b;color:#111;padding:0 4px}
+</style></head><body>
+<div class="k-badge">1</div>
+<div class="k-win k-term"><div class="k-bar"><i></i><i></i><i></i><b>Claude Code</b></div>
+  <div class="body k-mono">
+    <div class="l"><span class="p">&gt; </span><span id="c1"></span></div>
+    <div class="l"><span class="p">&gt; </span><span id="c2"></span></div>
+    <div class="l ok" id="okl">✓ humanize-korean 설치 완료</div>
+    <div class="l"><span class="p">&gt; </span><span id="c3"></span></div>
+    <div class="ba" id="ba">
+      <div class="bad" id="b1">AI 기술을 통해 효율을 높일 수 있다</div>
+      <div class="good" id="g1">→ <mark>AI로 효율을 높인다</mark></div>
+    </div>
+  </div>
+</div>
+<script>
+K.dur(7.5);
+let e=K.type("#c1","/plugin marketplace add epoko77-ai/im-not-ai",0.3,45);
+e=K.type("#c2","/plugin install humanize-korean@im-not-ai",e+0.25,45);
+K.show("#okl",e+0.3,"fade",.25);
+const e3=K.type("#c3","/humanize-korean",e+0.5,18);
+K.show("#ba",e3+0.3,"up",.35);
+K.show("#g1",e3+1.0,"left",.35);
+K.cls("#b1","bad",e3+0.7); K.at(t=>{document.getElementById("b1").style.color=t<e3+0.7?"#ddd":""});
+</script></body></html>

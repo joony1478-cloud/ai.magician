@@ -77,6 +77,14 @@ mark.w{background:#fff;color:var(--ink)}
 .cta .row small{display:block;font-weight:500;font-size:30px;color:var(--sub);margin-top:6px}
 .cta .sign{position:absolute;left:0;right:0;top:1090px;text-align:center;font-weight:800;font-size:34px;color:var(--sub)}
 .cta .sign b{color:var(--accent)}
+
+/* cta + media — 상단 일러스트(1080x620) 아래로 제목·3단 */
+.cta.hasmedia #media{left:0;top:0;width:1080px;height:620px}
+.cta.hasmedia h2{top:640px;font-size:66px;line-height:1.16}
+.cta.hasmedia .rows{top:836px;gap:16px}
+.cta.hasmedia .row{padding:20px 30px;font-size:34px;gap:22px;border-radius:18px}
+.cta.hasmedia .row .n{width:54px;height:54px;font-size:28px}
+.cta.hasmedia .row small{font-size:25px;margin-top:2px}
 </style>
 </head>
 <body>
@@ -111,13 +119,14 @@ if (s.type === "cover") {
     <div class="row"><span class="n">2</span><div>저장해두고 필요할 때 꺼내 쓰기</div></div>
     <div class="row"><span class="n">3</span><div>@${rich(D.handle)} 팔로우<small>${rich(s.follow || "매일 바로 써먹는 AI 꿀팁")}</small></div></div>
   </div>
-  <div class="sign">${rich(s.series || D.series).replace(rich(D.brand),`<b>${rich(D.brand)}</b>`)}</div>`;
+  ${hasMedia ? "" : `<div class="sign">${rich(s.series || D.series).replace(rich(D.brand),`<b>${rich(D.brand)}</b>`)}</div>`}`;
+  if (hasMedia) document.body.classList.add("hasmedia");
 }
 document.getElementById("root").innerHTML = html;
 
 // #media 자리에 구멍 뚫기 + 렌더러에게 좌표 알려주기
 const m = document.getElementById("media");
-if (hasMedia && s.type !== "cta") {
+if (hasMedia) {
   const r = m.getBoundingClientRect();
   const {x,y,width:w,height:h} = r;
   const path = `M0 0H1080V1350H0Z M${x} ${y}H${x+w}V${y+h}H${x}Z`;

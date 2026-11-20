@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* CTA 장 상단 일러스트 (1080x620) — GPT 일러스트(cta.png) + 두루마리 빛·빛줄기·줌 4초 반복 */
+body{background:#0e1630}
+.layer{position:absolute;inset:0}
+#img{background:url(../cta.png) center top/1080px 720px no-repeat;transform-origin:50% 45%}
+#beams{left:-419px;top:-728px;width:1920px;height:1920px;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,200,150,0) 0deg 7deg,rgba(255,215,170,.18) 9deg 11deg,rgba(255,200,150,0) 13deg 20deg);
+  mix-blend-mode:screen;-webkit-mask:radial-gradient(circle,#000 8%,rgba(0,0,0,.5) 24%,transparent 42%)}
+#glow{left:334px;top:330px;width:400px;height:260px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,226,140,.9),rgba(255,200,90,.3) 55%,transparent);mix-blend-mode:screen}
+#fade{background:linear-gradient(transparent 62%,#0b0b0b)}
+#grain{opacity:.09;mix-blend-mode:overlay}
+</style></head><body>
+<div class="layer" id="img"></div>
+<div class="layer" id="beams"></div>
+<div class="layer" id="glow"></div>
+<svg class="layer" id="grain" width="1080" height="620"><filter id="n"><feTurbulence id="tb" type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="1"/></filter><rect width="1080" height="620" filter="url(#n)"/></svg>
+<div class="layer" id="fade"></div>
+<script>
+K.dur(4);
+const T=4, w=t=>2*Math.PI*t/T, $=id=>document.getElementById(id);
+K.at(t=>{
+  $("img").style.transform=`scale(${1+0.035*(1-Math.cos(w(t)))/2})`;
+  $("beams").style.transform=`rotate(${20*t/T}deg)`;
+  $("glow").style.opacity=.35+.65*(1+Math.sin(w(t)*2))/2;
+  $("tb").setAttribute("seed",1+Math.floor(t*12)%6);
+});
+</script></body></html>

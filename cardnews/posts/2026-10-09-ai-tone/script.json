@@ -20,10 +20,11 @@
     },
     {
       "type": "body",
-      "title": "1. 금지어 주기",
+      "title": "1. im-not-ai 스킬",
       "media": "assets/02.gif",
-      "body": "AI는 자주 쓰는 <b>말버릇</b>이 있어요.\n<mark>'결론적으로' '다양한'</mark>은 금지!\n이것만 해도 문장이 사람 같아져요.",
-      "_scene": "채팅창에 금지어 프롬프트 타이핑 → 전송 → 자연스러운 답변"
+      "body": "<b>한글 AI 티</b>만 잡아주는 스킬이 있어요.\n클로드에 깔고 <mark>/humanize-korean</mark>\n내용은 그대로, 문체만 사람처럼 바뀌어요.",
+      "_scene": "Claude Code 터미널: 설치 명령 2줄 → 설치 완료 → /humanize-korean → 'AI 기술을 통해 효율을 높일 수 있다' 취소선 → 'AI로 효율을 높인다'",
+      "_source": "scrolls/writing STEP 1, github.com/epoko77-ai/im-not-ai"
     },
     {
       "type": "body",
@@ -42,8 +43,12 @@
     },
     {
       "type": "cta",
+      "media": "assets/05.gif",
+      "title": "말투 주문서,\n<mark>무료</mark>로 드릴게요",
       "keyword": "말투",
-      "dm": "AI 티 안 나는 프롬프트 모음을 DM으로 드려요"
+      "dm": "'AI티 안나게 글 쓰는법' 주문서를 DM으로 보내드려요",
+      "follow": "매일 바로 써먹는 AI 꿀팁",
+      "_scene": "GPT 일러스트(cta.png): AI술사 마법사가 빛나는 주문서 두루마리를 내밂 + 두루마리 빛·빛줄기·줌"
     }
   ]
 }

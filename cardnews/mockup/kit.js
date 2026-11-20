@@ -19,7 +19,7 @@
         const n = t < t0 ? 0 : Math.min(chars.length, Math.floor((t - t0) * cps) + 1);
         if (n === 0 && opts.placeholder) el.innerHTML = `<span class="k-ph">${opts.placeholder}</span>`;
         else el.textContent = chars.slice(0, n).join("");
-        const typing = t >= t0 - 0.6 && (n < chars.length || opts.caretAfter);
+        const typing = t >= t0 - 0.6 && (n < chars.length || !!opts.caretAfter);
         el.classList.toggle("k-caret", typing);
         el.classList.toggle("k-off", typing && Math.floor(t * 2.2) % 2 === 1 && (n === 0 || n === chars.length));
       }));
