@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+/* 표지 E · GPT 일러스트(cover-e.png) + 은은한 움직임
+   일러스트는 Figma generate_image(gpt-image) 로 생성 → 여기서 빛·줌·질감만 움직여 4초 반복 GIF 로 만든다 */
+body{background:#0e1630}
+.layer{position:absolute;inset:0}
+#img{width:1080px;height:1350px;background:url(../cover-e.png) center/cover;transform-origin:50% 36%}
+/* 사이렌 위치(540,100) 기준 */
+#beams{left:-420px;top:-980px;width:1920px;height:2160px;border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,170,120,.0) 0deg 7deg,rgba(255,190,140,.20) 9deg 11deg,rgba(255,170,120,0) 13deg 20deg);
+  mix-blend-mode:screen;-webkit-mask:radial-gradient(circle at 50% 50%,#000 6%,rgba(0,0,0,.6) 22%,transparent 40%);transform-origin:50% 50%}
+#siren{left:390px;top:-50px;width:300px;height:300px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,120,80,.95),rgba(255,90,60,.35) 45%,transparent);mix-blend-mode:screen}
+#crack{left:400px;top:690px;width:340px;height:240px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,110,60,.75),transparent);mix-blend-mode:screen;filter:blur(6px)}
+#grain{opacity:.10;mix-blend-mode:overlay}
+</style></head><body>
+<div class="layer" id="img"></div>
+<div class="layer" id="beams"></div>
+<div class="layer" id="siren"></div>
+<div class="layer" id="crack"></div>
+<svg class="layer" id="grain" width="1080" height="1350"><filter id="n"><feTurbulence id="tb" type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="1"/></filter><rect width="1080" height="1350" filter="url(#n)"/></svg>
+<script>
+K.dur(4);
+const T=4, w=t=>2*Math.PI*t/T, $=id=>document.getElementById(id);
+K.at(t=>{
+  $("img").style.transform=`scale(${1+0.04*(1-Math.cos(w(t)))/2})`;          // 천천히 다가갔다 돌아오기
+  $("beams").style.transform=`rotate(${20*t/T}deg)`;                          // 20도 = 무늬 한 칸 → 끊김 없는 반복
+  const blink=Math.pow(Math.abs(Math.sin(w(t)*2)),1.5);
+  $("siren").style.opacity=.25+.75*blink;
+  $("beams").style.opacity=.55+.45*blink;
+  $("crack").style.opacity=.35+.45*(1+Math.sin(w(t)*2+1))/2;
+  $("tb").setAttribute("seed", 1+Math.floor(t*12)%6);                          // 필름 질감 깜빡임
+});
+</script></body></html>

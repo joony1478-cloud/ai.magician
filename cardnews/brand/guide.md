@@ -71,11 +71,15 @@
 | A | **변신** | 검정 격자, BEFORE 창의 문제 표시→취소선→AFTER 로 교체 + 수치 미터 | 전/후 차이가 분명한 팁 |
 | B | **노란 도장** | 브랜드 노랑 전체 + 종이 카드 + "인증" 도장 쾅 (제목 GIF 안) | 피드에서 튀어야 할 때, 시리즈 대표작 |
 | C | **주문 입력** | 검정, 큰 입력창에 프롬프트 타이핑→전송→팁 목록 등장 | 프롬프트 레시피·목록형 |
-| **D (기본)** | **일러스트 뉴스형** | 레트로 인쇄 일러스트(크림 종이·주홍/남색·입자 질감, 빛줄기·네모 캐릭터·땅 갈라짐) 전체 → 하단 검정 페이드 + 외곽선 칩 + 흰 제목 2줄 | **기본 표지.** 뉴스·툴 소개·꿀팁 전부 |
+| D | 일러스트 뉴스형 (SVG 직접 그림) | 레트로 인쇄풍 SVG + 요소별 움직임 | Figma 이미지 생성을 못 쓸 때 대체용 |
+| **E (기본)** | **GPT 일러스트 뉴스형** | Figma `generate_image`(gpt-image)로 만든 레트로 인쇄 일러스트 + 사이렌·빛줄기·빛 번짐·줌 움직임 → 하단 검정 페이드 + 외곽선 칩 + 흰 제목 2줄 | **기본 표지.** 뉴스·툴 소개·꿀팁 전부 |
 
-**D 표지 규칙** (`cover-d.html` 이 원본)
+**E/D 표지 규칙** (E: `cover-e.html` + `cover-e.png` 가 원본)
 - script: `"coverStyle":"news", "series":false, "chipStyle":"outline"`, 칩은 `AI 뉴스`/`AI 꿀팁`/`AI 툴` 같은 분류, 제목은 흰색 2줄(줄당 13자 이내, `<mark>` 안 씀)
-- 일러스트는 SVG 로 직접 그린다: 상단 60%에만 그림, y 760 아래는 땅/여백(검정 페이드 자리)
+- 일러스트 생성 (E): Figma MCP `generate_image`, model `gpt-image-2.5-flare`, 1024×1280. 파일은 Figma 'AI술사 카드뉴스 일러스트'(8eK6e9z4JP3jOzVhWvy1eD)에 쌓는다. **Figma AI 크레딧이 드는 유료 기능** — 한 편에 1~2장까지
+  - 프롬프트 뼈대: "Sophisticated editorial illustration for an Instagram cover, retro risograph screen-print style with fine paper grain, halftone texture and slightly misregistered ink. Limited palette: warm vermilion red-orange, deep navy blue, soft cream paper, tiny accents of mustard yellow. Scene: <주제 장면>. Characters and action placed in the upper 60 percent of the frame; the bottom 40 percent is a calm, dark, nearly empty ground area fading toward deep navy-black, leaving clean space for a headline. Cute but refined character design, bold clean shapes, magazine-quality. Absolutely no text, no letters, no words, no logos anywhere."
+  - 받은 PNG 는 `assets/cover.png` 로 저장(이미지 URL 은 7일 뒤 만료) → `cover-e.html` 을 복사해 빛·깜빡임 위치를 그림에 맞게 옮기고 `mock.mjs` 로 4초 GIF
+- 상단 60%에만 그림, 하단은 어두운 땅/여백(검정 페이드 자리)
 - 캐릭터: 주제의 주인공(AI 툴·회사)을 네모 몸통 캐릭터로 + **AI술사 마법사(주홍 몸통·남색 고깔모자·노란 별)** 가 매번 등장 = 계정 마스코트
 - 움직임은 4초 끊김 없는 반복: 빛줄기 회전, 사이렌 깜빡임, 캐릭터 떨림/소품 흔들림, 종이 날림
 - 실존 회사 로고는 그리지 않는다 (국기·건물 같은 상징이나 이름 글자로 표현)

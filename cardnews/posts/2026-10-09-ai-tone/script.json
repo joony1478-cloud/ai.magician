@@ -5,7 +5,7 @@
     "topic": "AI가 쓴 글에서 'AI 티' 지우는 프롬프트 3가지",
     "format": "프롬프트 레시피형",
     "ctaKeyword": "말투",
-    "coverOptions": "a / b / c / d — 확정: d (일러스트 뉴스형)"
+    "coverOptions": "a / b / c / d / e — 확정: e (GPT 일러스트 + 움직임)"
   },
   "slides": [
     {
@@ -15,8 +15,8 @@
       "chip": "AI 꿀팁",
       "chipStyle": "outline",
       "title": "AI가 쓴 글, 다 티 난다\n이 3가지만 바꾸세요",
-      "media": "assets/cover-d.gif",
-      "_scene": "레트로 인쇄 일러스트: 사이렌 빛줄기, 식은땀 흘리는 AI 로봇이 든 'AI티' 도장 찍힌 원고, 돋보기 든 AI술사 마법사, 땅 갈라짐"
+      "media": "assets/cover-e.gif",
+      "_scene": "GPT 일러스트(cover-e.png) + 사이렌 깜빡임·빛줄기 회전·갈라진 땅 빛·천천히 줌"
     },
     {
       "type": "body",
