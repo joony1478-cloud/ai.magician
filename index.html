@@ -78,6 +78,7 @@ a{color:inherit}
 .bar .fill{flex:1;border-bottom:6px solid #e9e8e3;margin-bottom:-1px}
 .bar a{display:flex;align-items:center;gap:8px;padding:0 18px;font-size:14px;font-weight:600;color:var(--sub);text-decoration:none;border-left:1px solid var(--line)}
 .bar a:hover{color:var(--text)}
+@media (max-width:600px){.bar a{padding:0 14px}.bar .igh{display:none}}
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding:44px 20px 40px;border-bottom:1px solid var(--line);
@@ -115,6 +116,27 @@ a{color:inherit}
 
 /* ---------- files ---------- */
 .files-h{font-weight:800;font-size:24px;letter-spacing:-.02em;margin-bottom:14px}
+/* 찾기: 검색 + 도구/주제 칩 */
+.finder{margin-bottom:26px;display:grid;gap:12px}
+.search{display:flex;align-items:center;gap:10px;max-width:560px;height:54px;padding:0 18px;border:1.5px solid var(--line);border-radius:999px;background:var(--bg2);transition:border-color .2s}
+.search:focus-within{border-color:var(--stamp)}
+.search .ph-bold{font-size:20px;color:var(--dim)}
+.search input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:var(--text)}
+.search input::placeholder{color:var(--dim)}
+.chrow{display:flex;align-items:flex-start;gap:12px}
+.chrow .chl{flex:none;width:34px;padding-top:11px;font-weight:800;font-size:14px;color:var(--sub)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip-f{appearance:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;min-height:42px;padding:0 16px;border:0;border-radius:999px;background:var(--bg3);
+  font:800 15px Paperlogy,sans-serif;color:var(--text);transition:background-color .15s}
+.chip-f:hover{background:#3a3a3a}
+.chip-f small{font-weight:400;font-size:14px;color:var(--sub)}
+.chip-f[aria-pressed=true]{background:var(--stamp);color:var(--stamp-ink)}
+.chip-f[aria-pressed=true] small{color:var(--stamp-ink)}
+.found{font-size:14px;color:var(--sub)}
+.found b{color:var(--text)}
+.empty{padding:40px 16px;text-align:center;border:1px dashed var(--line);color:var(--sub)}
+.empty button{margin-top:10px;appearance:none;border:0;background:none;color:var(--stamp);font:800 15px Paperlogy,sans-serif;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (max-width:600px){.chrow{flex-direction:column;gap:6px}.chrow .chl{padding-top:0}.chip-f{min-height:38px;padding:0 13px;font-size:14px}}
 .files-wrap{position:relative}
 .files{list-style:none;display:grid;gap:12px}
 .clip{position:absolute;top:-50px;right:100px;width:30px;height:76px;transform:rotate(9deg);z-index:2;pointer-events:none;filter:drop-shadow(0 2px 2px rgba(0,0,0,.5))}
@@ -194,7 +216,8 @@ input::placeholder{color:#8a8984}
 <header class="bar">
   <span class="mark" aria-hidden="true">술</span>
   <span class="fill" aria-hidden="true"></span>
-  <a href="https://www.instagram.com/ai.magician.kr/" target="_blank" rel="noopener"><i class="ph-bold ph-instagram-logo" aria-hidden="true"></i>@ai.magician.kr</a>
+  <a href="contact/">contact</a>
+  <a href="https://www.instagram.com/ai.magician.kr/" target="_blank" rel="noopener" aria-label="인스타그램 @ai.magician.kr"><i class="ph-bold ph-instagram-logo" aria-hidden="true"></i><span class="igh">@ai.magician.kr</span></a>
 </header>
 
 <section class="hero">
@@ -215,9 +238,16 @@ input::placeholder{color:#8a8984}
   </section>
 
   <h2 class="files-h" id="filesH">주문서</h2>
+  <div class="finder">
+    <label class="search"><i class="ph-bold ph-magnifying-glass" aria-hidden="true"></i><input type="search" id="q" placeholder="제목이나 키워드로 찾기" aria-label="주문서 검색" autocomplete="off" enterkeyhint="search"></label>
+    <div class="chrow"><span class="chl" id="chToolL">도구</span><div class="chips" id="chTool" role="group" aria-labelledby="chToolL"></div></div>
+    <div class="chrow"><span class="chl" id="chTopicL">주제</span><div class="chips" id="chTopic" role="group" aria-labelledby="chTopicL"></div></div>
+    <p class="found" id="found" aria-live="polite"></p>
+  </div>
   <div class="files-wrap">
     <svg class="clip" viewBox="0 0 30 76" aria-hidden="true"><path d="M21 22v38a6 6 0 0 1-12 0V12a9 9 0 0 1 18 0v50a12 12 0 0 1-24 0V24" fill="none" stroke="var(--metal)" stroke-width="2.6" stroke-linecap="round"/></svg>
     <ul class="files" id="files" aria-labelledby="filesH"></ul>
+    <div class="empty" id="empty" hidden>찾는 주문서가 없어요. 다른 단어로 찾아보세요.<br><button type="button" id="reset">전체 보기</button></div>
   </div>
 
   <a class="insta" href="https://www.instagram.com/ai.magician.kr/" target="_blank" rel="noopener"><i class="ph-bold ph-instagram-logo" aria-hidden="true"></i><span>새 주문서는 <b>인스타</b>에서 먼저 공개해요</span></a>
@@ -279,83 +309,103 @@ const DOCS = [
   { id:"gpt-100", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/gpt-100/",
     title:"바로 써먹는 챗GPT 비밀코드 100개",
     desc:"복사해서 붙여넣기만 하면 되는 프롬프트 100개 모음",
-    tags:[["누구나",1],["복붙용",1]] },
+    tags:[["누구나",1],["복붙용",1]],
+    tools:["ChatGPT"], topics:["프롬프트"] },
   { id:"writing", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/writing/",
     title:"AI티 안나게 자연스러운 글 쓰는법",
     desc:"'자연스럽게 써줘'로는 안 바뀌는 이유와 진짜 고치는 법",
-    tags:[["누구나",1],["채팅창에서 바로",1]] },
+    tags:[["누구나",1],["채팅창에서 바로",1]],
+    tools:["Claude Code", "Claude", "ChatGPT"], topics:["글쓰기", "스킬", "프롬프트"] },
   { id:"claude-code", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/claude-code/",
     title:"클로드 코드 설치가이드 & 활용법",
     desc:"처음 설치부터 제대로 쓰는 법까지 순서대로 따라 하면 돼요",
-    tags:[["입문",1],["설치 포함"]] },
+    tags:[["입문",1],["설치 포함"]],
+    tools:["Claude Code"], topics:["입문·설치"] },
   { id:"token-saving", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/token-saving/",
     title:"클로드 토큰 아끼는 스킬 3종",
     desc:"같은 요금제로 더 오래 쓰는 토큰 절약 스킬 설치법과 사용법",
-    tags:[["Claude Code 필요"],["설치 포함"]] },
+    tags:[["Claude Code 필요"],["설치 포함"]],
+    tools:["Claude Code"], topics:["토큰 절약", "스킬"] },
   { id:"web-design", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/web-design/",
     title:"클로드 디자인스킬 3종",
     desc:"frontend-design · taste · impeccable 설치법과 바로 쓰는 문장",
-    tags:[["Claude Code 필요"],["Node.js 필요"]] },
+    tags:[["Claude Code 필요"],["Node.js 필요"]],
+    tools:["Claude Code"], topics:["디자인·이미지", "스킬"] },
   { id:"marketing", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/marketing/",
     title:"클로드가 마케팅 팀이 되는 스킬 3종",
     desc:"기획자, 카피라이터, 광고 기획자 스킬을 한 번에 세팅해요",
-    tags:[["Claude Code 필요"],["약 10분"]] },
+    tags:[["Claude Code 필요"],["약 10분"]],
+    tools:["Claude Code"], topics:["마케팅", "스킬"] },
   { id:"claude-x-gpt", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/claude-x-gpt/",
     title:"클로드 X 지피티, 한 팀으로 쓰는 법",
     desc:"클로드 안에서 GPT 불러 쓰는 공식 플러그인 세팅법과 바로 쓰는 명령어",
-    tags:[["Claude Code 필요"],["ChatGPT 무료 가능",1]] },
+    tags:[["Claude Code 필요"],["ChatGPT 무료 가능",1]],
+    tools:["Claude Code", "ChatGPT"], topics:["스킬", "디자인·이미지"] },
   { id:"claude-skills-top5", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/claude-skills-top5/",
     title:"클로드 코드 필수 스킬 5종",
     desc:"5개 스킬을 한 번에 까는 명령어와 바로 쓰는 법",
-    tags:[["Claude Code 필요"],["설치 포함"]] },
+    tags:[["Claude Code 필요"],["설치 포함"]],
+    tools:["Claude Code"], topics:["스킬", "입문·설치"] },
   { id:"video-edit", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/video-edit/",
     title:"클로드한테 영상편집 맡기는 법",
     desc:"레퍼런스 스타일 그대로 컷·자막·효과음·모션그래픽, 소리 듣는 whisper 설치 + 프리미어·캡컷에서 직접 수정하는 법",
-    tags:[["Claude Code 필요"],["설치 포함"]] },
+    tags:[["Claude Code 필요"],["설치 포함"]],
+    tools:["Claude Code"], topics:["영상", "스킬"] },
   { id:"gpt-fact-check", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/gpt-fact-check/",
     title:"출처까지 지어내는 GPT거짓말 잡는법",
     desc:"출처 링크 + 신뢰도 표시로 AI 거짓말 걸러내는 복붙 프롬프트",
-    tags:[["누구나",1]] },
+    tags:[["누구나",1]],
+    tools:["ChatGPT"], topics:["프롬프트"] },
   { id:"gpt-instructions", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/gpt-instructions/",
     title:"GPT 답변 수준 확 바꾸는 설정",
     desc:"사용자 지정 지침에 붙여넣는 복붙용 기본 지침 + 설정 방법",
-    tags:[["누구나",1]] },
+    tags:[["누구나",1]],
+    tools:["ChatGPT"], topics:["프롬프트", "입문·설치"] },
   { id:"gpt-image-real", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/gpt-image-real/",
     title:"GPT 이미지 진짜 사진처럼 만드는 법",
     desc:"실사 비밀 프롬프트 3줄 + 한글 글자·부분 수정 프롬프트, 전후 비교 포함",
-    tags:[["누구나",1]] },
+    tags:[["누구나",1]],
+    tools:["ChatGPT"], topics:["디자인·이미지", "프롬프트"] },
   { id:"ai-image-edit-layers", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/ai-image-edit-layers/",
     title:"AI 이미지, 다시 뽑지 말고 직접 고치세요",
     desc:"캔바 매직 레이어로 통짜 AI 이미지를 레이어로 분해하고, 클로드·GPT에 캔바를 연결해 처음부터 수정 가능한 디자인 뽑기",
-    tags:[["누구나",1]] },
+    tags:[["누구나",1]],
+    tools:["캔바", "Claude", "ChatGPT"], topics:["디자인·이미지"] },
   { id:"claude-pdf-markitdown", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/claude-pdf-markitdown/",
     title:"클로드에 PDF 그냥 올리지 마세요",
     desc:"PDF를 클로드가 가장 잘 읽는 MD 파일로 바꿔 토큰 아끼기 — 마크잇다운 설치·사용 가이드",
-    tags:[["누구나",1]] },
+    tags:[["누구나",1]],
+    tools:["Claude Code", "Claude"], topics:["토큰 절약", "스킬"] },
   { id:"remove-ai-look", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/remove-ai-look/",
     title:"고객을 사로잡는 컨텐츠 디자인 [카드뉴스/광고]",
     desc:"카드뉴스·광고 디자인에서 AI 티 빼는 3가지와 복붙 프롬프트",
-    tags:[["누구나",1]] },
+    tags:[["누구나",1]],
+    tools:["ChatGPT", "Claude"], topics:["디자인·이미지", "마케팅", "프롬프트"] },
   { id:"better-ai-answers", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/better-ai-answers/",
     title:"AI 답변이 달라지는 질문법",
     desc:"목적·핵심·결과물 질문 공식과 지침 프롬프트, 상황별 복붙 예시까지 담았어요.",
-    tags:[["누구나",1]] },
+    tags:[["누구나",1]],
+    tools:["ChatGPT", "Claude"], topics:["프롬프트", "입문·설치"] },
   { id:"viral-reels-archive", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/viral-reels-archive/",
     title:"100만뷰 릴스 분석 스킬",
     desc:"내 컨텐츠 한 줄로 조회수 높은 릴스를 찾고 대본, 잘 된 이유, 기획, 콘티까지 받는 클로드 스킬",
-    tags:[["Claude Code 필요"],["설치 포함"]] },
+    tags:[["Claude Code 필요"],["설치 포함"]],
+    tools:["Claude Code"], topics:["영상", "마케팅", "스킬"] },
   { id:"apple-banner-prompt", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/apple-banner-prompt/",
     title:"애플처럼 보이는 제품 배너 프롬프트",
     desc:"사진 한 장으로 애플 홈페이지 배너 같은 상세페이지 첫 화면 만들기",
-    tags:[["누구나",1],["복붙용",1]] },
+    tags:[["누구나",1],["복붙용",1]],
+    tools:["ChatGPT"], topics:["디자인·이미지", "마케팅", "프롬프트"] },
   { id:"claude-move-prompt", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/claude-move-prompt/",
     title:"클로드 이사 프롬프트",
     desc:"길어진 대화의 핵심을 새 채팅으로 옮기는 인수인계 프롬프트",
-    tags:[["누구나",1],["복붙용",1]] },
+    tags:[["누구나",1],["복붙용",1]],
+    tools:["Claude"], topics:["프롬프트", "토큰 절약"] },
   { id:"detail-page-skill", url:"https://joony1478-cloud.github.io/ai.magician/scrolls/detail-page-skill/",
     title:"AI로 고퀄리티 상세페이지 디자인",
     desc:"레퍼런스 링크와 제품 설명만 넣으면 편집 가능한 상세페이지가 나오는 클로드 코드 스킬",
-    tags:[["누구나",1]] }
+    tags:[["누구나",1]],
+    tools:["Claude Code", "ChatGPT"], topics:["디자인·이미지", "마케팅", "스킬"] }
 ];
 
 /* ================= 배포 점검 ================= */
@@ -404,9 +454,26 @@ function renderGate(){
     ? `<b>20편 모두 열렸어요</b><span>보고 싶은 주문서를 눌러보세요</span>`
     : `<b>잠긴 주문서 20편</b><span>정보 한 번만 남기면 전부 열려요</span>`;
 }
+/* 찾기 상태: 도구·주제 칩 + 검색어 */
+const F = {tool:"", topic:"", q:""};
+const norm = t => (t||"").toLowerCase().replace(/\s+/g,"");
+const hit = d => (!F.tool || (d.tools||[]).includes(F.tool)) && (!F.topic || (d.topics||[]).includes(F.topic))
+  && (!F.q || norm([d.title,d.desc,(d.tools||[]).join(" "),(d.topics||[]).join(" "),d.tags.map(t=>t[0]).join(" ")].join(" ")).includes(norm(F.q)));
+function renderChips(){
+  [["tool","tools","#chTool"],["topic","topics","#chTopic"]].forEach(([k,field,sel])=>{
+    const cnt = {};
+    DOCS.forEach(d=>(d[field]||[]).forEach(v=>cnt[v]=(cnt[v]||0)+1));
+    const keys = Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a]);
+    const chip = (v,label,n)=>`<button type="button" class="chip-f" data-k="${k}" data-v="${v}" aria-pressed="${F[k]===v}">${label}${n!=null?` <small>${n}</small>`:""}</button>`;
+    $(sel).innerHTML = chip("","전체") + keys.map(v=>chip(v,v,cnt[v])).join("");
+  });
+}
 function renderFiles(){
   const on = unlocked();
-  $("#files").innerHTML = DOCS.map(d=>`
+  const list = DOCS.filter(hit);
+  $("#empty").hidden = list.length>0;
+  $("#found").innerHTML = (F.tool||F.topic||F.q) ? `<b>${list.length}편</b> 찾았어요` : `전체 <b>${DOCS.length}편</b>`;
+  $("#files").innerHTML = list.map(d=>`
     <li><a class="file${on?" is-open":""}" href="${d.url}" data-id="${d.id}" aria-describedby="st-${d.id}">
       <span class="ttl">${d.title}<i class="ph-bold ph-arrow-up-right" aria-hidden="true"></i></span>
       <span class="desc">${d.desc}</span>
@@ -564,7 +631,13 @@ $("#form").addEventListener("submit", async e=>{
   }finally{ btn.disabled = false; btn.textContent = "전부 열기"; }
 });
 
-renderGate(); renderFiles();
+document.addEventListener("click", e=>{
+  const c = e.target.closest(".chip-f");
+  if(c){ F[c.dataset.k] = c.dataset.v; renderChips(); renderFiles(); return; }
+  if(e.target.closest("#reset")){ F.tool=F.topic=F.q=""; $("#q").value=""; renderChips(); renderFiles(); }
+});
+$("#q").addEventListener("input", e=>{ F.q = e.target.value.trim(); renderFiles(); });
+renderGate(); renderChips(); renderFiles();
 </script>
 </body>
 </html>
